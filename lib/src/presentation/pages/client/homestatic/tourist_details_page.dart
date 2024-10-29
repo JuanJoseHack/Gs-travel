@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:ecommerce_v2/src/presentation/widgest/distance.dart';
+import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/distance.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 

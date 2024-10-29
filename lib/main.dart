@@ -9,12 +9,12 @@ import 'package:ecommerce_v2/src/presentation/pages/admin/product/update/AdminPr
 import 'package:ecommerce_v2/src/presentation/pages/auth/login/LoginPage.dart';
 import 'package:ecommerce_v2/src/presentation/pages/auth/register/RegisterPage.dart';
 import 'package:ecommerce_v2/src/presentation/pages/client/home/ClientHomePage.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/home/home_page.dart';
+import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/home_page.dart';
 import 'package:ecommerce_v2/src/presentation/pages/client/product/list/ClienteProductListPage.dart';
 import 'package:ecommerce_v2/src/presentation/pages/profile/info/ProfileInfoPage.dart';
 import 'package:ecommerce_v2/src/presentation/pages/profile/update/ProfileUpdatePage.dart';
 import 'package:ecommerce_v2/src/presentation/pages/roles/RolesPage.dart';
-import 'package:ecommerce_v2/src/presentation/pages/welcome_page.dart';
+import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';

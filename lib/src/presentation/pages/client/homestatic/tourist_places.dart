@@ -1,4 +1,4 @@
-import 'package:ecommerce_v2/src/domain/models/tourist_places_model.dart';
+import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/tourist_places_model.dart';
 import 'package:flutter/material.dart';
 
 class TouristPlaces extends StatelessWidget {

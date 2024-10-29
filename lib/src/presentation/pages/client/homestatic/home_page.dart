@@ -1,10 +1,10 @@
 import 'package:ecommerce_v2/src/presentation/pages/client/home/ClientHomePage.dart';
 import 'package:ecommerce_v2/src/presentation/pages/profile/info/ProfileInfoPage.dart';
 import 'package:ecommerce_v2/src/presentation/widgest/custom_icon_button.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/location_card.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/nearby_places.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/recommended_places.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/tourist_places.dart';
+import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/location_card.dart';
+import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/nearby_places.dart';
+import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/recommended_places.dart';
+import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/tourist_places.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 

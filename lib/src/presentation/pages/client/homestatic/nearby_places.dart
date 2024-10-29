@@ -1,6 +1,6 @@
-import 'package:ecommerce_v2/src/domain/models/nearby_places_model.dart';
-import 'package:ecommerce_v2/src/presentation/pages/tourist_details_page.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/distance.dart';
+import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/nearby_places_model.dart';
+import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/tourist_details_page.dart';
+import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/distance.dart';
 import 'package:flutter/material.dart';
 
 class NearbyPlaces extends StatelessWidget {
