@@ -15,31 +15,18 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<EmailChanged>(_onEmailChanged);
     on<PasswordChanged>(_onPasswordChanged);
     on<LoginSubmit>(_onLoginSubmit);
+    on<LoginSaveSession>(_onLoginSaveUserSession);
     on<LoginFormReset>(_onLoginFormReset);
-    on<LoginSaveUserSession>(_onLoginSaveUserSession);
   }
-
   final formKey = GlobalKey<FormState>();
 
   Future<void> _onInitEvent(InitEvent event, Emitter<LoginState> emit) async {
     AuthResponse? authResponse = await authUseCases.getUserSession.run();
     emit(state.copyWith(formKey: formKey));
-    print('Usuario en sesion: ${authResponse?.toJson()}');
+    print("usuario en session: ${authResponse?.toJson()}");
     if (authResponse != null) {
-      emit(state.copyWith(
-          response: Success(authResponse), // AuthResponse -> user, token
-          formKey: formKey));
+      emit(state.copyWith(response: Success(authResponse), formKey: formKey));
     }
-  }
-
-  Future<void> _onLoginSaveUserSession(
-      LoginSaveUserSession event, Emitter<LoginState> emit) async {
-    await authUseCases.saveUserSession.run(event.authResponse);
-  }
-
-  Future<void> _onLoginFormReset(
-      LoginFormReset event, Emitter<LoginState> emit) async {
-    state.formKey?.currentState?.reset();
   }
 
   Future<void> _onEmailChanged(
@@ -47,7 +34,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(state.copyWith(
         email: BlocFormItem(
             value: event.email.value,
-            error: event.email.value.isNotEmpty ? null : 'Ingresa el email'),
+            error: event.email.value.isNotEmpty ? null : 'Ingresa email'),
         formKey: formKey));
   }
 
@@ -56,10 +43,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(state.copyWith(
         password: BlocFormItem(
             value: event.password.value,
-            error: event.password.value.isNotEmpty &&
-                    event.password.value.length >= 6
-                ? null
-                : 'Ingresa el password'),
+            error:
+                event.password.value.isNotEmpty ? null : 'Ingresa el password'),
         formKey: formKey));
   }
 
@@ -72,5 +57,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     Resource response =
         await authUseCases.login.run(state.email.value, state.password.value);
     emit(state.copyWith(response: response, formKey: formKey));
+  }
+
+  Future<void> _onLoginSaveUserSession(
+      LoginSaveSession event, Emitter<LoginState> emit) async {
+    await authUseCases.saveUserSession.run(event.authResponse);
+  }
+
+  Future<void> _onLoginFormReset(
+      LoginFormReset event, Emitter<LoginState> emit) async {
+    state.formKey?.currentState?.reset();
   }
 }

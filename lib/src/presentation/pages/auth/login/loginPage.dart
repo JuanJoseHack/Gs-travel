@@ -1,7 +1,7 @@
 import 'package:ecommerce_v2/src/domain/models/AuthResponse.dart';
 import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
-import 'package:ecommerce_v2/src/presentation/pages/auth/login/bloc/LoginBloc.dart';
 import 'package:ecommerce_v2/src/presentation/pages/auth/login/LoginContent.dart';
+import 'package:ecommerce_v2/src/presentation/pages/auth/login/bloc/LoginBloc.dart';
 import 'package:ecommerce_v2/src/presentation/pages/auth/login/bloc/LoginEvent.dart';
 import 'package:ecommerce_v2/src/presentation/pages/auth/login/bloc/LoginState.dart';
 import 'package:flutter/material.dart';
@@ -20,11 +20,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
-    // EJECUTA UNA SOLA VEZ CUANDO CARGA LA PANTALLA
     super.initState();
-    // WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-    //   _loginBlocCubit?.dispose();
-    // });
   }
 
   @override
@@ -42,25 +38,23 @@ class _LoginPageState extends State<LoginPage> {
         } else if (responseState is Success) {
           final authResponse = responseState.data as AuthResponse;
           //_bloc?.add(LoginFormReset());
-          _bloc?.add(LoginSaveUserSession(authResponse: authResponse));
+          _bloc?.add(LoginSaveSession(authResponse: authResponse));
+          print('Token recibido: ${authResponse.token}');
           Fluttertoast.showToast(
               msg: 'Login exitoso', toastLength: Toast.LENGTH_LONG);
           if (authResponse.user.roles != null) {
             final role = authResponse.user.roles!.first;
-            if (role?.id == 'CLIENT') {
+            if (role.id == 'CLIENT') {
               // Si el  rol es 'CLIENT', redirigir al HomePage del cliente
               WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                 Navigator.pushNamedAndRemoveUntil(
-                    context, 'home', (route) => false);
+                    context, 'client/home', (route) => false);
               });
             } else {
               // Si el  rol es 'ADMIN', redirigir al HomePage del cliente
               WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                 Navigator.pushNamedAndRemoveUntil(
-                    context,
-                    'admin/home',
-                    (route) =>
-                        false); //enviar a la pagina de roles, despues de guardar el usuario
+                    context, 'admin/home', (route) => false);
               });
             }
           }

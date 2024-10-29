@@ -6,7 +6,7 @@ import 'package:ecommerce_v2/src/presentation/pages/admin/home/AdminHomePage.dar
 import 'package:ecommerce_v2/src/presentation/pages/admin/product/create/AdminProductCreatePage.dart';
 import 'package:ecommerce_v2/src/presentation/pages/admin/product/list/AdminProductListPage.dart';
 import 'package:ecommerce_v2/src/presentation/pages/admin/product/update/AdminProductUpdatePage.dart';
-import 'package:ecommerce_v2/src/presentation/pages/auth/login/loginPage.dart';
+import 'package:ecommerce_v2/src/presentation/pages/auth/login/LoginPage.dart';
 import 'package:ecommerce_v2/src/presentation/pages/auth/register/RegisterPage.dart';
 import 'package:ecommerce_v2/src/presentation/pages/client/home/ClientHomePage.dart';
 import 'package:ecommerce_v2/src/presentation/pages/client/home/home_page.dart';
