@@ -33,7 +33,11 @@ class RecommendedPlaces extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) => TouristDetailsPage(
                         image: place.image,
-                        // Pasa la imagen al detalle
+                        name: place.name,
+                        location: place.location,
+                        rating: place.rating,
+                        description: place.description,
+                        estimatedTime: place.estimatedTime,
                       ),
                     ),
                   );
@@ -45,18 +49,18 @@ class RecommendedPlaces extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: Image.asset(
-                          place.image, // Muestra la imagen del lugar
-                          width: double.maxFinite,
-                          fit: BoxFit.cover,
+                          place.image,
+                          width: double.infinity,
                           height: 150,
+                          fit: BoxFit
+                              .cover, // Asegura que la imagen cubra todo el contenedor
                         ),
                       ),
                       const SizedBox(height: 5),
                       Row(
                         children: [
-                          // Usa el nuevo campo "name" para mostrar el título
                           Text(
-                            place.name, // Título basado en el campo name
+                            place.name,
                             style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
@@ -69,7 +73,7 @@ class RecommendedPlaces extends StatelessWidget {
                             size: 14,
                           ),
                           Text(
-                            place.rating.toString(), // Muestra la calificación
+                            place.rating.toString(),
                             style: const TextStyle(
                               fontSize: 12,
                             ),
@@ -86,7 +90,7 @@ class RecommendedPlaces extends StatelessWidget {
                           ),
                           const SizedBox(width: 5),
                           Text(
-                            place.location, // Muestra la ubicación del lugar
+                            place.location,
                             style: const TextStyle(
                               fontSize: 12,
                             ),
@@ -100,9 +104,7 @@ class RecommendedPlaces extends StatelessWidget {
             ),
           );
         },
-        separatorBuilder: (context, index) => const Padding(
-          padding: EdgeInsets.only(right: 10),
-        ),
+        separatorBuilder: (context, index) => const SizedBox(width: 10),
         itemCount: recommendedPlaces.length,
       ),
     );

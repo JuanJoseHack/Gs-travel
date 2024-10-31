@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
               msg: 'Login exitoso', toastLength: Toast.LENGTH_LONG);
           if (authResponse.user.roles != null) {
             final role = authResponse.user.roles!.first;
-            if (role.id == 'CLIENT') {
+            if (role?.id == 'CLIENT') {
               // Si el  rol es 'CLIENT', redirigir al HomePage del cliente
               WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                 Navigator.pushNamedAndRemoveUntil(

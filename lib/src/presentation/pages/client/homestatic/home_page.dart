@@ -18,96 +18,55 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0; // Índice del BottomNavigationBar
 
+  // Lista de páginas para cada índice
+  final List<Widget> _pages = [
+    const HomeContent(), // Contenido para Home
+    const Center(child: Text("Bookmark")), // Bookmark Page
+    const ClientHomePage(), // Store Page
+    const ProfileInfoPage(), // Profile Page
+  ];
+
+  // Método para cambiar el índice seleccionado
   void _onItemTapped(int index) {
-    if (index == 2) {
-      // Redirige a ClientHomePage cuando el ícono de tienda es seleccionado
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const ClientHomePage(),
-        ),
-      );
-    } else if (index == 3) {
-      // Redirige a ProfileInfoPage cuando el ícono de perfil es seleccionado
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const ProfileInfoPage(),
-        ),
-      );
-    } else {
-      // Manejo de otros íconos
-      setState(() {
-        _selectedIndex = index;
-      });
-    }
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.black,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text("Bienvenido"),
-            Text(
-              "Juan Jose",
-              style: Theme.of(context).textTheme.labelMedium,
-            ),
-          ],
-        ),
-        actions: const [
-          CustomIconButton(
-            icon: Icon(Ionicons.search_outline),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 8.0, right: 12),
-            child: CustomIconButton(
-              icon: Icon(Ionicons.notifications_outline),
-            ),
-          ),
-        ],
-      ),
-      body: ListView(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.all(14),
-        children: [
-          // LOCATION CARD
-          const LocationCard(),
-          const SizedBox(height: 15),
-          const TouristPlaces(),
-          // CATEGORIES
-          const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Recomendación",
-                style: Theme.of(context).textTheme.titleLarge,
+      appBar: _selectedIndex == 0 // Mostrar AppBar solo en HomeContent
+          ? AppBar(
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              foregroundColor: Colors.black,
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Bienvenido"),
+                  Text(
+                    "Juan Jose",
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
+                ],
               ),
-              TextButton(onPressed: () {}, child: const Text("Ver Todo"))
-            ],
-          ),
-          const SizedBox(height: 10),
-          const RecommendedPlaces(),
-          const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Cerca de ti",
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              TextButton(onPressed: () {}, child: const Text("Ver todo"))
-            ],
-          ),
-          const SizedBox(height: 10),
-          const NearbyPlaces(),
-        ],
+              actions: const [
+                CustomIconButton(
+                  icon: Icon(Ionicons.search_outline),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 8.0, right: 12),
+                  child: CustomIconButton(
+                    icon: Icon(Ionicons.notifications_outline),
+                  ),
+                ),
+              ],
+            )
+          : null, // No mostrar AppBar en las otras páginas
+      body: IndexedStack(
+        index: _selectedIndex, // Muestra la página correspondiente al índice
+        children: _pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -134,6 +93,50 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+    );
+  }
+}
+
+// Contenido principal para la pestaña Home
+class HomeContent extends StatelessWidget {
+  const HomeContent({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      physics: const BouncingScrollPhysics(),
+      padding: const EdgeInsets.all(14),
+      children: [
+        const LocationCard(),
+        const SizedBox(height: 15),
+        const TouristPlaces(),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Recomendación",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            TextButton(onPressed: () {}, child: const Text("Ver Todo")),
+          ],
+        ),
+        const SizedBox(height: 10),
+        const RecommendedPlaces(),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Cerca de ti",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            TextButton(onPressed: () {}, child: const Text("Ver todo")),
+          ],
+        ),
+        const SizedBox(height: 10),
+        const NearbyPlaces(),
+      ],
     );
   }
 }

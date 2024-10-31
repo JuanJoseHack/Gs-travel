@@ -1,158 +1,165 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/distance.dart';
+import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/FullImagePage.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
 class TouristDetailsPage extends StatelessWidget {
+  final String image;
+  final String name;
+  final String location;
+  final double rating;
+  final String description;
+  final String estimatedTime;
+
   const TouristDetailsPage({
     Key? key,
     required this.image,
+    required this.name,
+    required this.location,
+    required this.rating,
+    required this.description,
+    required this.estimatedTime,
   }) : super(key: key);
-  final String image;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(10),
           children: [
-            SizedBox(
-              height: size.height * 0.38,
-              width: double.maxFinite,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.vertical(
-                          bottom: Radius.circular(20)),
-                      image: DecorationImage(
-                        image: AssetImage(image),
-                        fit: BoxFit.cover,
+            // Imagen con clic para pantalla completa
+            Stack(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FullImagePage(image: image),
                       ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.4),
-                          spreadRadius: 0,
-                          blurRadius: 20,
-                          offset: const Offset(0, 10),
+                    );
+                  },
+                  child: Hero(
+                    tag: image,
+                    child: SizedBox(
+                      height: size.height * 0.38,
+                      width: double.maxFinite,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset(
+                          image,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                // Ajustar los botones al borde superior izquierdo
+                Positioned(
+                  top: 10,
+                  left: -5, // Ahora bien alineado al borde
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.7),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 2, horizontal: 10), // Ajuste fino del padding
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          iconSize: 22,
+                          icon: const Icon(Ionicons.chevron_back),
+                        ),
+                        IconButton(
+                          iconSize: 22,
+                          onPressed: () {
+                            // Lógica de favoritos aquí
+                          },
+                          icon: const Icon(Ionicons.heart_outline),
                         ),
                       ],
                     ),
                   ),
-                  Positioned(
-                    top: 10,
-                    left: 0,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.7),
-                        borderRadius: const BorderRadius.horizontal(
-                            right: Radius.circular(15)),
-                      ),
-                      child: Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            iconSize: 20,
-                            icon: const Icon(Ionicons.chevron_back),
-                          ),
-                          IconButton(
-                            iconSize: 20,
-                            onPressed: () {},
-                            icon: const Icon(Ionicons.heart_outline),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
+                ),
+              ],
             ),
+
             const SizedBox(height: 20),
+
+            // Información del lugar
             Row(
               children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Sea of Peace",
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      "Portic Team 8km",
-                      style: Theme.of(context).textTheme.bodySmall,
-                    )
-                  ],
-                ),
-                const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.only(right: 4),
-                  child: IconButton(
-                    onPressed: () {},
-                    iconSize: 20,
-                    icon: const Icon(Ionicons.chatbubble_ellipses_outline),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        name,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        location,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    ],
                   ),
                 ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
+                Row(
                   children: [
-                    Text(
-                      "4.6",
-                      style: Theme.of(context).textTheme.bodySmall,
+                    IconButton(
+                      onPressed: () {},
+                      iconSize: 20,
+                      icon: const Icon(Ionicons.chatbubble_ellipses_outline),
                     ),
-                    Icon(
-                      Ionicons.star,
-                      color: Colors.yellow[800],
-                      size: 15,
-                    )
-                  ],
-                )
-              ],
-            ),
-            const SizedBox(height: 15),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      "01d:32h:56m",
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
+                    const SizedBox(width: 5),
+                    Row(
+                      children: [
+                        Text(
+                          rating.toString(),
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        const SizedBox(width: 2),
+                        Icon(
+                          Ionicons.star,
+                          color: Colors.yellow[700],
+                          size: 24,
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 5),
-                    Text(
-                      "Started in",
-                      style: Theme.of(context).textTheme.bodySmall,
-                    )
                   ],
                 ),
               ],
             ),
+
             const SizedBox(height: 10),
-            Container(
-              height: 180,
-              width: double.maxFinite,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
-                image: const DecorationImage(
-                  image: AssetImage('assets/map.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+
+            // Tiempo estimado para llegar
+            Text(
+              estimatedTime,
+              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                    color: Theme.of(context).primaryColor,
+                  ),
             ),
+
             const SizedBox(height: 15),
-            const Distance(),
+
+            // Descripción del lugar
+            Text(
+              description,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+
             const SizedBox(height: 20),
+
+            // Botón de unirse al tour
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
@@ -164,7 +171,7 @@ class TouristDetailsPage extends StatelessWidget {
                 ),
               ),
               child: const Text("Únete a este tour"),
-            )
+            ),
           ],
         ),
       ),

@@ -1,6 +1,5 @@
 import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/nearby_places_model.dart';
 import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/tourist_details_page.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/distance.dart';
 import 'package:flutter/material.dart';
 
 class NearbyPlaces extends StatelessWidget {
@@ -10,6 +9,8 @@ class NearbyPlaces extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: List.generate(nearbyPlaces.length, (index) {
+        final place = nearbyPlaces[index];
+
         return Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: SizedBox(
@@ -23,13 +24,20 @@ class NearbyPlaces extends StatelessWidget {
               child: InkWell(
                 borderRadius: BorderRadius.circular(12),
                 onTap: () {
+                  // Navegación al hacer clic en el lugar
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => TouristDetailsPage(
-                          image: nearbyPlaces[index].image,
-                        ),
-                      ));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TouristDetailsPage(
+                        image: place.image,
+                        name: place.name,
+                        location: place.location,
+                        rating: 4.5,
+                        description: place.description, // Descripción única
+                        estimatedTime: place.estimatedTime,
+                      ),
+                    ),
+                  );
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -38,7 +46,7 @@ class NearbyPlaces extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: Image.asset(
-                          nearbyPlaces[index].image,
+                          place.image,
                           height: double.maxFinite,
                           width: 130,
                           fit: BoxFit.cover,
@@ -49,17 +57,20 @@ class NearbyPlaces extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              "Laguna ",
-                              style: TextStyle(
+                            Text(
+                              place.name, // Mostrar nombre único
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            const Text("Gs Travel"),
-                            const SizedBox(height: 10),
-                            // DISTANCE WIDGET
-                            const Distance(),
+                            Text(
+                              place.location, // Mostrar ubicación única
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                              ),
+                            ),
                             const Spacer(),
                             Row(
                               children: [
@@ -70,31 +81,13 @@ class NearbyPlaces extends StatelessWidget {
                                 ),
                                 const Text(
                                   "4.5",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                  ),
+                                  style: TextStyle(fontSize: 12),
                                 ),
-                                const Spacer(),
-                                RichText(
-                                  text: TextSpan(
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: Theme.of(context).primaryColor,
-                                      ),
-                                      children: const [
-                                        TextSpan(
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.black54,
-                                          ),
-                                        )
-                                      ]),
-                                )
                               ],
-                            )
+                            ),
                           ],
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),

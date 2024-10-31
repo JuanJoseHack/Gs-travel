@@ -11,7 +11,7 @@ class ProfileInfoContent extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        _imageBackground(context),
+        _whiteBackground(), // Fondo blanco en lugar de imagen
         Column(
           children: [
             _imageProfile(),
@@ -23,6 +23,15 @@ class ProfileInfoContent extends StatelessWidget {
     );
   }
 
+  Widget _whiteBackground() {
+    return Container(
+      color:
+          const Color.fromARGB(255, 255, 250, 250), // Establece el fondo blanco
+      width: double.infinity,
+      height: double.infinity,
+    );
+  }
+
   Widget _cardProfileInfo(BuildContext context) {
     return Container(
       width: double.infinity,
@@ -30,10 +39,10 @@ class ProfileInfoContent extends StatelessWidget {
         maxHeight: MediaQuery.of(context).size.height * 0.35,
       ),
       decoration: BoxDecoration(
-        color: Color.fromRGBO(255, 255, 255, 0.69),
+        color: Color.fromRGBO(255, 255, 255, 0.675),
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
+          topLeft: Radius.circular(18),
+          topRight: Radius.circular(18),
         ),
       ),
       child: Container(
@@ -53,12 +62,12 @@ class ProfileInfoContent extends StatelessWidget {
                   ),
                   ListTile(
                     title: Text(user?.email ?? ''),
-                    subtitle: Text('Correo electronico'),
+                    subtitle: Text('Correo electrónico'),
                     leading: Icon(Icons.email),
                   ),
                   ListTile(
                     title: Text(user?.phone ?? ''),
-                    subtitle: Text('Telefono'),
+                    subtitle: Text('Teléfono'),
                     leading: Icon(Icons.phone),
                   ),
                 ],
@@ -86,17 +95,6 @@ class ProfileInfoContent extends StatelessWidget {
     );
   }
 
-  Widget _imageBackground(BuildContext context) {
-    return Image.asset(
-      'assets/background1.jpg',
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      fit: BoxFit.cover,
-      color: Color.fromRGBO(0, 0, 0, 0.267),
-      colorBlendMode: BlendMode.darken,
-    );
-  }
-
   Widget _imageProfile() {
     return Container(
       margin: EdgeInsets.only(top: 80),
@@ -111,7 +109,7 @@ class ProfileInfoContent extends StatelessWidget {
                   fit: BoxFit.cover,
                   fadeInDuration: Duration(seconds: 1),
                 )
-              : Image.asset('assets/img/user_image.png'), // Imagen por defecto
+              : Image.asset('assets/img/user_menu.png'), // Imagen por defecto
         ),
       ),
     );
