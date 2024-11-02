@@ -1,4 +1,3 @@
-import 'package:ecommerce_v2/src/domain/models/Category.dart';
 import 'package:ecommerce_v2/src/domain/models/Product.dart';
 import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
 import 'package:ecommerce_v2/src/presentation/pages/client/product/list/ClienteProductListItem.dart';
@@ -10,7 +9,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ClientProductListPage extends StatefulWidget {
-  const ClientProductListPage({super.key});
+  final String searchQuery;
+
+  const ClientProductListPage({Key? key, required this.searchQuery})
+      : super(key: key);
 
   @override
   State<ClientProductListPage> createState() => _ClientProductListPageState();
@@ -18,54 +20,60 @@ class ClientProductListPage extends StatefulWidget {
 
 class _ClientProductListPageState extends State<ClientProductListPage> {
   ClienteProductListBloc? _bloc;
-  Category? category;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if (category != null) {
-        _bloc?.add(GetProductsByCategory(idCategory: category!.id!));
-      }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _bloc?.add(GetProductsByCategory(idCategory: 1));
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    category = ModalRoute.of(context)?.settings.arguments as Category;
     _bloc = BlocProvider.of<ClienteProductListBloc>(context);
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Productos'),
-        ),
         body: BlocListener<ClienteProductListBloc, ClienteProductListState>(
-            listener: (context, state) {
+      listener: (context, state) {
+        final responseState = state.response;
+        if (responseState is Error) {
+          Fluttertoast.showToast(
+              msg: responseState.message, toastLength: Toast.LENGTH_LONG);
+        }
+      },
+      child: BlocBuilder<ClienteProductListBloc, ClienteProductListState>(
+        builder: (context, state) {
           final responseState = state.response;
-          if (responseState is Success) {
-            if (responseState.data is bool) {
-              _bloc?.add(GetProductsByCategory(idCategory: category!.id!));
-            }
-          } else if (responseState is Error) {
-            Fluttertoast.showToast(
-                msg: responseState.message, toastLength: Toast.LENGTH_LONG);
+          if (responseState is Loading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (responseState is Success) {
+            List<Product> products = responseState.data as List<Product>;
+            // Filtra los productos según el término de búsqueda
+            List<Product> filteredProducts = products
+                .where((product) => product.name
+                    .toLowerCase()
+                    .contains(widget.searchQuery.toLowerCase()))
+                .toList();
+
+            return GridView.builder(
+              padding: const EdgeInsets.all(8.0),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 0.75,
+              ),
+              itemCount: filteredProducts.length,
+              itemBuilder: (context, index) {
+                return ClientProductListItem(product: filteredProducts[index]);
+              },
+            );
           }
-        }, child: BlocBuilder<ClienteProductListBloc, ClienteProductListState>(
-          builder: (context, state) {
-            final responseState = state.response;
-            if (responseState is Loading) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (responseState is Success) {
-              List<Product> products = responseState.data as List<Product>;
-              return ListView.builder(
-                  itemCount: products.length,
-                  itemBuilder: (context, index) {
-                    return ClientProductListItem(_bloc, products[index]);
-                  });
-            }
-            return Container();
-          },
-        )));
+          return Container();
+        },
+      ),
+    ));
   }
 }

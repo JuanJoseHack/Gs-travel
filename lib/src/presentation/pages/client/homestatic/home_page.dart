@@ -22,15 +22,24 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     const HomeContent(), // Contenido para Home
     const Center(child: Text("Bookmark")), // Bookmark Page
-    const ClientHomePage(), // Store Page
+    const Center(child: Text("Store")), // Este no se usará realmente
     const ProfileInfoPage(), // Profile Page
   ];
 
   // Método para cambiar el índice seleccionado
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index == 2) {
+      // Navega a ClientHomePage cuando se selecciona el ícono de tienda
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const ClientHomePage()),
+      );
+    } else {
+      // Actualiza el índice de navegación para otras páginas
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
   }
 
   @override

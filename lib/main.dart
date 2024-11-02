@@ -1,4 +1,6 @@
 import 'package:ecommerce_v2/injection.dart';
+import 'package:ecommerce_v2/src/cart/CartPage.dart';
+import 'package:ecommerce_v2/src/cart/CartProvider.dart';
 import 'package:ecommerce_v2/src/presentation/blocProvider.dart';
 import 'package:ecommerce_v2/src/presentation/pages/admin/category/create/AdminCategoryCreatePage.dart';
 import 'package:ecommerce_v2/src/presentation/pages/admin/category/update/AdminCategoryUpdatePage.dart';
@@ -16,25 +18,29 @@ import 'package:ecommerce_v2/src/presentation/pages/profile/update/ProfileUpdate
 import 'package:ecommerce_v2/src/presentation/pages/roles/RolesPage.dart';
 import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/welcome_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await configureDependencies(); //para la inyeccion de dependencia
+  await configureDependencies(); // Para la inyección de dependencia
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: blocProviders,
+    String _searchQuery = "";
+    return MultiProvider(
+      providers: [
+        ...blocProviders, // Mantener los providers de BLoC
+        ChangeNotifierProvider(
+            create: (_) => CartProvider()), // Añadir CartProvider
+      ],
       child: MaterialApp(
-        builder: FToastBuilder(), //activar toas global app
+        builder: FToastBuilder(), // Activar Toast globalmente en la app
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -63,7 +69,9 @@ class MyApp extends StatelessWidget {
           'admin/product/update': (BuildContext context) =>
               AdminProductUpdatePage(),
           'client/product/list': (BuildContext context) =>
-              ClientProductListPage(),
+              ClientProductListPage(searchQuery: _searchQuery),
+          'client/cart': (BuildContext context) =>
+              CartPage(), // Nueva ruta para el carrito
         },
       ),
     );
