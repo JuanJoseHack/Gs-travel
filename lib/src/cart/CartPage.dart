@@ -1,3 +1,4 @@
+import 'package:ecommerce_v2/src/service/YapeQrPage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'CartProvider.dart';
@@ -15,29 +16,6 @@ class CartPage extends StatelessWidget {
       body: cartProvider.itemsCount > 0
           ? Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '${cartProvider.itemsCount} producto${cartProvider.itemsCount > 1 ? 's' : ''}',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          cartProvider.clearCart();
-                        },
-                        child: Text(
-                          'Vaciar carrito',
-                          style: TextStyle(
-                              color: Colors.red, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
                 Expanded(
                   child: ListView.builder(
                     itemCount: cartProvider.items.length,
@@ -125,14 +103,24 @@ class CartPage extends StatelessWidget {
                       const SizedBox(height: 10),
                       ElevatedButton(
                         onPressed: () {
-                          // Aquí puedes agregar la lógica de compra
+                          print("Botón de 'Pagar con Yape' presionado.");
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => YapeQrPage(
+                                amount: cartProvider.totalAmount,
+                                phoneNumber: "951705863",
+                              ),
+                            ),
+                          );
+                          print("Navegación a YapeQrPage iniciada.");
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
                           padding: const EdgeInsets.symmetric(vertical: 12.0),
                         ),
                         child: const Text(
-                          'Continuar con la compra',
+                          'Pagar con Yape',
                           style: TextStyle(fontSize: 16),
                         ),
                       ),
