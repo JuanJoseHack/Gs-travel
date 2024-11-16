@@ -1,6 +1,6 @@
-import 'package:ecommerce_v2/src/domain/models/Category.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/category/list/bloc/AdminCategoryListBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/category/list/bloc/AdminCategoryListEvent.dart';
+import 'package:GsTravel/src/domain/models/Category.dart';
+import 'package:GsTravel/src/presentation/pages/admin/category/list/bloc/AdminCategoryListBloc.dart';
+import 'package:GsTravel/src/presentation/pages/admin/category/list/bloc/AdminCategoryListEvent.dart';
 import 'package:flutter/material.dart';
 
 class AdminCategoryListItem extends StatelessWidget {

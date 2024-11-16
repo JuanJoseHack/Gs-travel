@@ -1,10 +1,10 @@
-import 'package:ecommerce_v2/src/presentation/pages/admin/category/create/bloc/AdminCategoryCreateBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/category/create/bloc/AdminCategoryCreateEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/category/create/bloc/AdminCategoryCreateState.dart';
-import 'package:ecommerce_v2/src/presentation/utils/BlocFormItem.dart';
-import 'package:ecommerce_v2/src/presentation/utils/SelectOptionImageDialog.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/DefaultIconBack.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/DefaultTextField.dart';
+import 'package:GsTravel/src/presentation/pages/admin/category/create/bloc/AdminCategoryCreateBloc.dart';
+import 'package:GsTravel/src/presentation/pages/admin/category/create/bloc/AdminCategoryCreateEvent.dart';
+import 'package:GsTravel/src/presentation/pages/admin/category/create/bloc/AdminCategoryCreateState.dart';
+import 'package:GsTravel/src/presentation/utils/BlocFormItem.dart';
+import 'package:GsTravel/src/presentation/utils/SelectOptionImageDialog.dart';
+import 'package:GsTravel/src/presentation/widgest/DefaultIconBack.dart';
+import 'package:GsTravel/src/presentation/widgest/DefaultTextField.dart';
 import 'package:flutter/material.dart';
 
 class AdminCategoryCreateContent extends StatelessWidget {

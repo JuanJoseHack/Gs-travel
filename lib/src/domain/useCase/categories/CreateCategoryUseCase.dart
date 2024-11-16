@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:ecommerce_v2/src/domain/models/Category.dart';
-import 'package:ecommerce_v2/src/domain/repository/CategoriesRepository.dart';
+import 'package:GsTravel/src/domain/models/Category.dart';
+import 'package:GsTravel/src/domain/repository/CategoriesRepository.dart';
 
 class CreateCategoryUseCase {
   CategoriesRepository categoriesRepository;

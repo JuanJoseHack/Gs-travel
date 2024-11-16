@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:ecommerce_v2/src/data/api/ApiConfig.dart';
-import 'package:ecommerce_v2/src/domain/utils/ListToString.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/data/api/ApiConfig.dart';
+import 'package:GsTravel/src/domain/utils/ListToString.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:path/path.dart';
-import 'package:ecommerce_v2/src/domain/models/Category.dart';
+import 'package:GsTravel/src/domain/models/Category.dart';
 
 class CategoriesService {
   Future<String> token;

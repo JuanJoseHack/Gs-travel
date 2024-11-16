@@ -1,8 +1,8 @@
-import 'package:ecommerce_v2/src/domain/useCase/Auth/GetUserSessionUseCase.dart';
-import 'package:ecommerce_v2/src/domain/useCase/Auth/LoginUseCase.dart';
-import 'package:ecommerce_v2/src/domain/useCase/Auth/LogoutUseCase.dart';
-import 'package:ecommerce_v2/src/domain/useCase/Auth/RegisterUseCase.dart';
-import 'package:ecommerce_v2/src/domain/useCase/Auth/SaveUserSessionUseCase.dart';
+import 'package:GsTravel/src/domain/useCase/Auth/GetUserSessionUseCase.dart';
+import 'package:GsTravel/src/domain/useCase/Auth/LoginUseCase.dart';
+import 'package:GsTravel/src/domain/useCase/Auth/LogoutUseCase.dart';
+import 'package:GsTravel/src/domain/useCase/Auth/RegisterUseCase.dart';
+import 'package:GsTravel/src/domain/useCase/Auth/SaveUserSessionUseCase.dart';
 
 //class principal del Auth
 class AuthUseCases {

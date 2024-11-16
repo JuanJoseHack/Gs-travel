@@ -1,4 +1,4 @@
-import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/home_page.dart';
+import 'package:GsTravel/src/presentation/pages/client/homestatic/home_page.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {

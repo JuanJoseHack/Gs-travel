@@ -1,4 +1,4 @@
-import 'package:ecommerce_v2/src/domain/models/Roles.dart';
+import 'package:GsTravel/src/domain/models/Roles.dart';
 import 'package:flutter/material.dart';
 
 class RolesItem extends StatelessWidget {

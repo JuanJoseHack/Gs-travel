@@ -1,4 +1,4 @@
-import 'package:ecommerce_v2/src/domain/useCase/users/UpdateUserUseCase.dart';
+import 'package:GsTravel/src/domain/useCase/users/UpdateUserUseCase.dart';
 
 class UsersUseCases {
   UpdateUserUseCase updateUser;

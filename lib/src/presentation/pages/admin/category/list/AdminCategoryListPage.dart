@@ -1,9 +1,9 @@
-import 'package:ecommerce_v2/src/domain/models/Category.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/category/list/AdminCategoryListItem.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/category/list/bloc/AdminCategoryListBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/category/list/bloc/AdminCategoryListEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/category/list/bloc/AdminCategoryListState.dart';
+import 'package:GsTravel/src/domain/models/Category.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/presentation/pages/admin/category/list/AdminCategoryListItem.dart';
+import 'package:GsTravel/src/presentation/pages/admin/category/list/bloc/AdminCategoryListBloc.dart';
+import 'package:GsTravel/src/presentation/pages/admin/category/list/bloc/AdminCategoryListEvent.dart';
+import 'package:GsTravel/src/presentation/pages/admin/category/list/bloc/AdminCategoryListState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';

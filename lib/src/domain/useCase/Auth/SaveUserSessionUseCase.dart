@@ -1,5 +1,5 @@
-import 'package:ecommerce_v2/src/domain/models/AuthResponse.dart';
-import 'package:ecommerce_v2/src/domain/repository/AuthRepository.dart';
+import 'package:GsTravel/src/domain/models/AuthResponse.dart';
+import 'package:GsTravel/src/domain/repository/AuthRepository.dart';
 
 class SaveUserSessionUseCase {
   AuthRepository authRepository;

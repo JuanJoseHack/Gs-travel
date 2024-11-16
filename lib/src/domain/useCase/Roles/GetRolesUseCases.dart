@@ -1,4 +1,4 @@
-import 'package:ecommerce_v2/src/domain/repository/RolesRepository.dart';
+import 'package:GsTravel/src/domain/repository/RolesRepository.dart';
 
 class GetRolesUseCases {
   RolesRepository rolesRepository;

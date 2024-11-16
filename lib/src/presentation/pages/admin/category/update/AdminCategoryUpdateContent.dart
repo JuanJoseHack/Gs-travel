@@ -1,11 +1,11 @@
-import 'package:ecommerce_v2/src/domain/models/Category.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/category/update/bloc/AdminCategoryUpdateBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/category/update/bloc/AdminCategoryUpdateEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/category/update/bloc/AdminCategoryUpdateState.dart';
-import 'package:ecommerce_v2/src/presentation/utils/BlocFormItem.dart';
-import 'package:ecommerce_v2/src/presentation/utils/SelectOptionImageDialog.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/DefaultIconBack.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/DefaultTextField.dart';
+import 'package:GsTravel/src/domain/models/Category.dart';
+import 'package:GsTravel/src/presentation/pages/admin/category/update/bloc/AdminCategoryUpdateBloc.dart';
+import 'package:GsTravel/src/presentation/pages/admin/category/update/bloc/AdminCategoryUpdateEvent.dart';
+import 'package:GsTravel/src/presentation/pages/admin/category/update/bloc/AdminCategoryUpdateState.dart';
+import 'package:GsTravel/src/presentation/utils/BlocFormItem.dart';
+import 'package:GsTravel/src/presentation/utils/SelectOptionImageDialog.dart';
+import 'package:GsTravel/src/presentation/widgest/DefaultIconBack.dart';
+import 'package:GsTravel/src/presentation/widgest/DefaultTextField.dart';
 
 import 'package:flutter/material.dart';
 

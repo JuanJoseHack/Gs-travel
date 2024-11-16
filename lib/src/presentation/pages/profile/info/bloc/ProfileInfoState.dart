@@ -1,4 +1,4 @@
-import 'package:ecommerce_v2/src/domain/models/User.dart';
+import 'package:GsTravel/src/domain/models/User.dart';
 import 'package:equatable/equatable.dart';
 
 class ProfileInfoState extends Equatable {

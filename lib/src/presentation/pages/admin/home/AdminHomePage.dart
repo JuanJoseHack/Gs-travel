@@ -1,10 +1,10 @@
-import 'package:ecommerce_v2/main.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/category/list/AdminCategoryListPage.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/home/bloc/AdminHomeBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/home/bloc/AdminHomeEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/home/bloc/AdminHomeState.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/product/list/AdminProductListPage.dart';
-import 'package:ecommerce_v2/src/presentation/pages/profile/info/ProfileInfoPage.dart';
+import 'package:GsTravel/main.dart';
+import 'package:GsTravel/src/presentation/pages/admin/category/list/AdminCategoryListPage.dart';
+import 'package:GsTravel/src/presentation/pages/admin/home/bloc/AdminHomeBloc.dart';
+import 'package:GsTravel/src/presentation/pages/admin/home/bloc/AdminHomeEvent.dart';
+import 'package:GsTravel/src/presentation/pages/admin/home/bloc/AdminHomeState.dart';
+import 'package:GsTravel/src/presentation/pages/admin/product/list/AdminProductListPage.dart';
+import 'package:GsTravel/src/presentation/pages/profile/info/ProfileInfoPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

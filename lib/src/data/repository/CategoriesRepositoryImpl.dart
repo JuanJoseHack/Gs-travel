@@ -1,8 +1,8 @@
 import 'dart:io';
-import 'package:ecommerce_v2/src/data/dataSource/remote/service/CategoriesService.dart';
-import 'package:ecommerce_v2/src/domain/models/Category.dart';
-import 'package:ecommerce_v2/src/domain/repository/CategoriesRepository.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/data/dataSource/remote/service/CategoriesService.dart';
+import 'package:GsTravel/src/domain/models/Category.dart';
+import 'package:GsTravel/src/domain/repository/CategoriesRepository.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
 
 class CategoriesRepositoryImpl implements CategoriesRepository {
   CategoriesService categoriesService;

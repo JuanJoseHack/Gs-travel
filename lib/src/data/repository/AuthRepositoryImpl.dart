@@ -1,9 +1,9 @@
-import 'package:ecommerce_v2/src/data/dataSource/local/SharedPref.dart';
-import 'package:ecommerce_v2/src/data/dataSource/remote/service/AuthService.dart';
-import 'package:ecommerce_v2/src/domain/models/AuthResponse.dart';
-import 'package:ecommerce_v2/src/domain/models/User.dart';
-import 'package:ecommerce_v2/src/domain/repository/AuthRepository.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/data/dataSource/local/SharedPref.dart';
+import 'package:GsTravel/src/data/dataSource/remote/service/AuthService.dart';
+import 'package:GsTravel/src/domain/models/AuthResponse.dart';
+import 'package:GsTravel/src/domain/models/User.dart';
+import 'package:GsTravel/src/domain/repository/AuthRepository.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   AuthService authService;

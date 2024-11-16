@@ -1,5 +1,5 @@
-import 'package:ecommerce_v2/src/domain/models/Roles.dart';
-import 'package:ecommerce_v2/src/domain/repository/RolesRepository.dart';
+import 'package:GsTravel/src/domain/models/Roles.dart';
+import 'package:GsTravel/src/domain/repository/RolesRepository.dart';
 
 class CreateRolesUseCase {
   RolesRepository rolesRepository;

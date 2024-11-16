@@ -1,8 +1,8 @@
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
-import 'package:ecommerce_v2/src/presentation/pages/auth/register/RegisterContent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/auth/register/bloc/RegisterBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/auth/register/bloc/RegisterEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/auth/register/bloc/RegisterState.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/presentation/pages/auth/register/RegisterContent.dart';
+import 'package:GsTravel/src/presentation/pages/auth/register/bloc/RegisterBloc.dart';
+import 'package:GsTravel/src/presentation/pages/auth/register/bloc/RegisterEvent.dart';
+import 'package:GsTravel/src/presentation/pages/auth/register/bloc/RegisterState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';

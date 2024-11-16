@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-import 'package:ecommerce_v2/src/domain/models/User.dart';
+import 'package:GsTravel/src/domain/models/User.dart';
 
 AuthResponse authResponseFromJson(String str) =>
     AuthResponse.fromJson(json.decode(str));

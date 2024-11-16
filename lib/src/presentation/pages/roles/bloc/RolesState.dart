@@ -1,4 +1,4 @@
-import 'package:ecommerce_v2/src/domain/models/Roles.dart';
+import 'package:GsTravel/src/domain/models/Roles.dart';
 import 'package:equatable/equatable.dart';
 
 class RolesState extends Equatable {

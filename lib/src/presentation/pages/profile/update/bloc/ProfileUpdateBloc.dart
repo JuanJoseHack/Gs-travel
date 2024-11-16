@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:ecommerce_v2/src/domain/models/AuthResponse.dart';
-import 'package:ecommerce_v2/src/domain/useCase/Auth/AuthUseCases.dart';
-import 'package:ecommerce_v2/src/domain/useCase/users/UsersUseCases.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
-import 'package:ecommerce_v2/src/presentation/pages/profile/update/bloc/ProfileUpdateEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/profile/update/bloc/ProfileUpdateState.dart';
-import 'package:ecommerce_v2/src/presentation/utils/BlocFormItem.dart';
+import 'package:GsTravel/src/domain/models/AuthResponse.dart';
+import 'package:GsTravel/src/domain/useCase/Auth/AuthUseCases.dart';
+import 'package:GsTravel/src/domain/useCase/users/UsersUseCases.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/presentation/pages/profile/update/bloc/ProfileUpdateEvent.dart';
+import 'package:GsTravel/src/presentation/pages/profile/update/bloc/ProfileUpdateState.dart';
+import 'package:GsTravel/src/presentation/utils/BlocFormItem.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';

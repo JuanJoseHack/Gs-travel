@@ -1,6 +1,6 @@
-import 'package:ecommerce_v2/src/domain/useCase/Auth/AuthUseCases.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/home/bloc/ClientHomeEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/home/bloc/ClientHomeState.dart';
+import 'package:GsTravel/src/domain/useCase/Auth/AuthUseCases.dart';
+import 'package:GsTravel/src/presentation/pages/client/home/bloc/ClientHomeEvent.dart';
+import 'package:GsTravel/src/presentation/pages/client/home/bloc/ClientHomeState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ClientHomeBloc extends Bloc<ClientHomeEvent, ClientHomeState> {

@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'package:ecommerce_v2/src/domain/models/User.dart';
-import 'package:ecommerce_v2/src/domain/utils/ListToString.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/domain/models/User.dart';
+import 'package:GsTravel/src/domain/utils/ListToString.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
 import 'package:http/http.dart' as http;
-import 'package:ecommerce_v2/src/data/api/ApiConfig.dart';
-import 'package:ecommerce_v2/src/domain/models/AuthResponse.dart';
+import 'package:GsTravel/src/data/api/ApiConfig.dart';
+import 'package:GsTravel/src/domain/models/AuthResponse.dart';
 
 class AuthService {
   Future<Resource<AuthResponse>> login(String email, String password) async {

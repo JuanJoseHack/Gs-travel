@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:ecommerce_v2/src/domain/models/Product.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/domain/models/Product.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
 
 abstract class ProductsRepository {
   Future<Resource<Product>> create(Product product, List<File> files);

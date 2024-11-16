@@ -1,7 +1,7 @@
-import 'package:ecommerce_v2/src/domain/models/Roles.dart';
-import 'package:ecommerce_v2/src/presentation/pages/roles/RolesItem.dart';
-import 'package:ecommerce_v2/src/presentation/pages/roles/bloc/RolesBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/roles/bloc/RolesState.dart';
+import 'package:GsTravel/src/domain/models/Roles.dart';
+import 'package:GsTravel/src/presentation/pages/roles/RolesItem.dart';
+import 'package:GsTravel/src/presentation/pages/roles/bloc/RolesBloc.dart';
+import 'package:GsTravel/src/presentation/pages/roles/bloc/RolesState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,7 +30,7 @@ class _RolesPageState extends State<RolesPage> {
             return Container(); // Evita mostrar cualquier UI mientras se redirige
           }
         }
-      } 
+      }
       return Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,

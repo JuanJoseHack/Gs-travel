@@ -1,5 +1,5 @@
-import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/nearby_places_model.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/tourist_details_page.dart';
+import 'package:GsTravel/src/presentation/pages/client/homestatic/nearby_places_model.dart';
+import 'package:GsTravel/src/presentation/pages/client/homestatic/tourist_details_page.dart';
 import 'package:flutter/material.dart';
 
 class NearbyPlaces extends StatelessWidget {

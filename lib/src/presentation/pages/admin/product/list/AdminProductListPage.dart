@@ -1,10 +1,10 @@
-import 'package:ecommerce_v2/src/domain/models/Category.dart';
-import 'package:ecommerce_v2/src/domain/models/Product.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/product/list/AdminProductListItem.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/product/list/bloc/AdminProductListBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/product/list/bloc/AdminProductListEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/product/list/bloc/AdminProductListState.dart';
+import 'package:GsTravel/src/domain/models/Category.dart';
+import 'package:GsTravel/src/domain/models/Product.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/presentation/pages/admin/product/list/AdminProductListItem.dart';
+import 'package:GsTravel/src/presentation/pages/admin/product/list/bloc/AdminProductListBloc.dart';
+import 'package:GsTravel/src/presentation/pages/admin/product/list/bloc/AdminProductListEvent.dart';
+import 'package:GsTravel/src/presentation/pages/admin/product/list/bloc/AdminProductListState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';

@@ -1,5 +1,5 @@
-import 'package:ecommerce_v2/src/domain/models/Category.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/category/list/bloc/ClienteCategoryListBloc.dart';
+import 'package:GsTravel/src/domain/models/Category.dart';
+import 'package:GsTravel/src/presentation/pages/client/category/list/bloc/ClienteCategoryListBloc.dart';
 import 'package:flutter/material.dart';
 
 class ClientCategoryListItem extends StatelessWidget {

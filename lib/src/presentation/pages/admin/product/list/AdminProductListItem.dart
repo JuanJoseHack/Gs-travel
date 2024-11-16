@@ -1,6 +1,6 @@
-import 'package:ecommerce_v2/src/domain/models/Product.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/product/list/bloc/AdminProductListBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/product/list/bloc/AdminProductListEvent.dart';
+import 'package:GsTravel/src/domain/models/Product.dart';
+import 'package:GsTravel/src/presentation/pages/admin/product/list/bloc/AdminProductListBloc.dart';
+import 'package:GsTravel/src/presentation/pages/admin/product/list/bloc/AdminProductListEvent.dart';
 import 'package:flutter/material.dart';
 
 class AdminProductListItem extends StatelessWidget {

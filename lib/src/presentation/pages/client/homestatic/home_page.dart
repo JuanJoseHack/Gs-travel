@@ -1,10 +1,9 @@
-import 'package:ecommerce_v2/src/presentation/pages/client/home/ClientHomePage.dart';
-import 'package:ecommerce_v2/src/presentation/pages/profile/info/ProfileInfoPage.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/custom_icon_button.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/location_card.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/nearby_places.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/recommended_places.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/homestatic/tourist_places.dart';
+import 'package:GsTravel/src/presentation/pages/profile/info/ProfileInfoPage.dart';
+import 'package:GsTravel/src/presentation/widgest/custom_icon_button.dart';
+import 'package:GsTravel/src/presentation/pages/client/homestatic/location_card.dart';
+import 'package:GsTravel/src/presentation/pages/client/homestatic/nearby_places.dart';
+import 'package:GsTravel/src/presentation/pages/client/homestatic/recommended_places.dart';
+import 'package:GsTravel/src/presentation/pages/client/homestatic/tourist_places.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -22,24 +21,16 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     const HomeContent(), // Contenido para Home
     const Center(child: Text("Bookmark")), // Bookmark Page
-    const Center(child: Text("Store")), // Este no se usará realmente
-    const ProfileInfoPage(), // Profile Page
+    const Center(child: Text("Store")), // Página de tienda
+    const ProfileInfoPage(), // Página de perfil
   ];
 
   // Método para cambiar el índice seleccionado
   void _onItemTapped(int index) {
-    if (index == 2) {
-      // Navega a ClientHomePage cuando se selecciona el ícono de tienda
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const ClientHomePage()),
-      );
-    } else {
-      // Actualiza el índice de navegación para otras páginas
-      setState(() {
-        _selectedIndex = index;
-      });
-    }
+    // Elimina el redireccionamiento y actualiza solo el índice
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override

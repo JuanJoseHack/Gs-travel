@@ -1,4 +1,4 @@
-import 'package:ecommerce_v2/injection.config.dart';
+import 'package:GsTravel/injection.config.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 

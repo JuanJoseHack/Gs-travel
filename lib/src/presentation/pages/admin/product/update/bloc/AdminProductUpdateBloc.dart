@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:ecommerce_v2/src/domain/useCase/products/ProductsUseCases.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/product/update/bloc/AdminProductUpdateEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/product/update/bloc/AdminProductUpdateState.dart';
-import 'package:ecommerce_v2/src/presentation/utils/BlocFormItem.dart';
+import 'package:GsTravel/src/domain/useCase/products/ProductsUseCases.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/presentation/pages/admin/product/update/bloc/AdminProductUpdateEvent.dart';
+import 'package:GsTravel/src/presentation/pages/admin/product/update/bloc/AdminProductUpdateState.dart';
+import 'package:GsTravel/src/presentation/utils/BlocFormItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';

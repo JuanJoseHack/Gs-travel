@@ -1,11 +1,11 @@
-import 'package:ecommerce_v2/src/domain/models/Product.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/product/update/bloc/AdminProductUpdateBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/product/update/bloc/AdminProductUpdateEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/product/update/bloc/AdminProductUpdateState.dart';
-import 'package:ecommerce_v2/src/presentation/utils/BlocFormItem.dart';
-import 'package:ecommerce_v2/src/presentation/utils/SelectOptionImageDialog.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/DefaultIconBack.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/DefaultTextField.dart';
+import 'package:GsTravel/src/domain/models/Product.dart';
+import 'package:GsTravel/src/presentation/pages/admin/product/update/bloc/AdminProductUpdateBloc.dart';
+import 'package:GsTravel/src/presentation/pages/admin/product/update/bloc/AdminProductUpdateEvent.dart';
+import 'package:GsTravel/src/presentation/pages/admin/product/update/bloc/AdminProductUpdateState.dart';
+import 'package:GsTravel/src/presentation/utils/BlocFormItem.dart';
+import 'package:GsTravel/src/presentation/utils/SelectOptionImageDialog.dart';
+import 'package:GsTravel/src/presentation/widgest/DefaultIconBack.dart';
+import 'package:GsTravel/src/presentation/widgest/DefaultTextField.dart';
 import 'package:flutter/material.dart';
 
 class AdminProductUpdateContent extends StatelessWidget {

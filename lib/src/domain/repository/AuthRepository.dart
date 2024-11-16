@@ -1,6 +1,6 @@
-import 'package:ecommerce_v2/src/domain/models/AuthResponse.dart';
-import 'package:ecommerce_v2/src/domain/models/User.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/domain/models/AuthResponse.dart';
+import 'package:GsTravel/src/domain/models/User.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
 
 abstract class AuthRepository {
   Future<AuthResponse?> getUserSession();

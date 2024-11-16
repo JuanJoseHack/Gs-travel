@@ -1,6 +1,6 @@
-import 'package:ecommerce_v2/src/presentation/pages/profile/info/ProfileInfoContent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/profile/info/bloc/ProfileInfoBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/profile/info/bloc/ProfileInfoState.dart';
+import 'package:GsTravel/src/presentation/pages/profile/info/ProfileInfoContent.dart';
+import 'package:GsTravel/src/presentation/pages/profile/info/bloc/ProfileInfoBloc.dart';
+import 'package:GsTravel/src/presentation/pages/profile/info/bloc/ProfileInfoState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

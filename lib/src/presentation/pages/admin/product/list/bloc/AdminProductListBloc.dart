@@ -1,7 +1,7 @@
-import 'package:ecommerce_v2/src/domain/useCase/products/ProductsUseCases.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/product/list/bloc/AdminProductListEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/product/list/bloc/AdminProductListState.dart';
+import 'package:GsTravel/src/domain/useCase/products/ProductsUseCases.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/presentation/pages/admin/product/list/bloc/AdminProductListEvent.dart';
+import 'package:GsTravel/src/presentation/pages/admin/product/list/bloc/AdminProductListState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AdminProductListBloc

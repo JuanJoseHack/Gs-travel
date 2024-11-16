@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:ecommerce_v2/src/domain/models/Category.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/domain/models/Category.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
 
 abstract class CategoriesRepository {
   Future<Resource<Category>> create(Category category, File file);

@@ -1,4 +1,4 @@
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
 import 'package:equatable/equatable.dart';
 
 class ClienteProductListState extends Equatable {

@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:ecommerce_v2/src/data/api/ApiConfig.dart';
-import 'package:ecommerce_v2/src/domain/models/Roles.dart';
-import 'package:ecommerce_v2/src/domain/utils/ListToString.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/data/api/ApiConfig.dart';
+import 'package:GsTravel/src/domain/models/Roles.dart';
+import 'package:GsTravel/src/domain/utils/ListToString.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
 import 'package:http/http.dart' as http;
 
 class RolesService {

@@ -1,4 +1,4 @@
-import 'package:ecommerce_v2/src/domain/repository/ProductsRepository.dart';
+import 'package:GsTravel/src/domain/repository/ProductsRepository.dart';
 
 class DeleteProductUseCase {
   ProductsRepository productsRepository;

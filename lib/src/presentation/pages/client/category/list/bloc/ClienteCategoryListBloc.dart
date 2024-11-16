@@ -1,7 +1,7 @@
-import 'package:ecommerce_v2/src/domain/useCase/categories/CategoriesUseCases.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/category/list/bloc/ClienteCategoryListEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/category/list/bloc/ClienteCategoryListState.dart';
+import 'package:GsTravel/src/domain/useCase/categories/CategoriesUseCases.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/presentation/pages/client/category/list/bloc/ClienteCategoryListEvent.dart';
+import 'package:GsTravel/src/presentation/pages/client/category/list/bloc/ClienteCategoryListState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ClienteCategoryListBloc

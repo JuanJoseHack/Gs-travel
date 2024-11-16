@@ -1,5 +1,5 @@
-import 'package:ecommerce_v2/src/domain/models/User.dart';
-import 'package:ecommerce_v2/src/domain/repository/AuthRepository.dart';
+import 'package:GsTravel/src/domain/models/User.dart';
+import 'package:GsTravel/src/domain/repository/AuthRepository.dart';
 
 class RegisterUseCase {
   AuthRepository repository;

@@ -1,9 +1,9 @@
-import 'package:ecommerce_v2/src/domain/models/Category.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/category/list/ClienteCategoryListItem.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/category/list/bloc/ClienteCategoryListBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/category/list/bloc/ClienteCategoryListEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/client/category/list/bloc/ClienteCategoryListState.dart';
+import 'package:GsTravel/src/domain/models/Category.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/presentation/pages/client/category/list/ClienteCategoryListItem.dart';
+import 'package:GsTravel/src/presentation/pages/client/category/list/bloc/ClienteCategoryListBloc.dart';
+import 'package:GsTravel/src/presentation/pages/client/category/list/bloc/ClienteCategoryListEvent.dart';
+import 'package:GsTravel/src/presentation/pages/client/category/list/bloc/ClienteCategoryListState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';

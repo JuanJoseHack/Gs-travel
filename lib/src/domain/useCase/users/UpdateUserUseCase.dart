@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:ecommerce_v2/src/domain/models/User.dart';
-import 'package:ecommerce_v2/src/domain/repository/UsersRepository.dart';
+import 'package:GsTravel/src/domain/models/User.dart';
+import 'package:GsTravel/src/domain/repository/UsersRepository.dart';
 
 class UpdateUserUseCase {
   UsersRepository usersRepository;

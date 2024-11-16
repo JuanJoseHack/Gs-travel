@@ -1,7 +1,7 @@
-import 'package:ecommerce_v2/src/presentation/pages/auth/login/bloc/LoginBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/auth/login/bloc/LoginEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/auth/login/bloc/LoginState.dart';
-import 'package:ecommerce_v2/src/presentation/utils/BlocFormItem.dart';
+import 'package:GsTravel/src/presentation/pages/auth/login/bloc/LoginBloc.dart';
+import 'package:GsTravel/src/presentation/pages/auth/login/bloc/LoginEvent.dart';
+import 'package:GsTravel/src/presentation/pages/auth/login/bloc/LoginState.dart';
+import 'package:GsTravel/src/presentation/utils/BlocFormItem.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 

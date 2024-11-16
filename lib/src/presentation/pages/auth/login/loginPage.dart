@@ -1,9 +1,9 @@
-import 'package:ecommerce_v2/src/domain/models/AuthResponse.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
-import 'package:ecommerce_v2/src/presentation/pages/auth/login/LoginContent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/auth/login/bloc/LoginBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/auth/login/bloc/LoginEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/auth/login/bloc/LoginState.dart';
+import 'package:GsTravel/src/domain/models/AuthResponse.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/presentation/pages/auth/login/LoginContent.dart';
+import 'package:GsTravel/src/presentation/pages/auth/login/bloc/LoginBloc.dart';
+import 'package:GsTravel/src/presentation/pages/auth/login/bloc/LoginEvent.dart';
+import 'package:GsTravel/src/presentation/pages/auth/login/bloc/LoginState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -44,11 +44,12 @@ class _LoginPageState extends State<LoginPage> {
               msg: 'Login exitoso', toastLength: Toast.LENGTH_LONG);
           if (authResponse.user.roles != null) {
             final role = authResponse.user.roles!.first;
+            print('Rol del usuario: ${role?.id}');
             if (role?.id == 'CLIENT') {
               // Si el  rol es 'CLIENT', redirigir al HomePage del cliente
               WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                 Navigator.pushNamedAndRemoveUntil(
-                    context, 'home', (route) => false);
+                    context, 'client/home', (route) => false);
               });
             } else {
               // Si el  rol es 'ADMIN', redirigir al HomePage del cliente

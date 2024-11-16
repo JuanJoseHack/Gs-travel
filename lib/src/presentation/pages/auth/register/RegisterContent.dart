@@ -1,8 +1,8 @@
-import 'package:ecommerce_v2/src/presentation/pages/auth/register/bloc/RegisterBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/auth/register/bloc/RegisterEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/auth/register/bloc/RegisterState.dart';
-import 'package:ecommerce_v2/src/presentation/utils/BlocFormItem.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/DefaultButton.dart';
+import 'package:GsTravel/src/presentation/pages/auth/register/bloc/RegisterBloc.dart';
+import 'package:GsTravel/src/presentation/pages/auth/register/bloc/RegisterEvent.dart';
+import 'package:GsTravel/src/presentation/pages/auth/register/bloc/RegisterState.dart';
+import 'package:GsTravel/src/presentation/utils/BlocFormItem.dart';
+import 'package:GsTravel/src/presentation/widgest/DefaultButton.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 

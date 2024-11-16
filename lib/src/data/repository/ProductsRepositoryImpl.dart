@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:ecommerce_v2/src/data/dataSource/remote/service/ProductsService.dart';
-import 'package:ecommerce_v2/src/domain/models/Product.dart';
-import 'package:ecommerce_v2/src/domain/repository/ProductsRepository.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/data/dataSource/remote/service/ProductsService.dart';
+import 'package:GsTravel/src/domain/models/Product.dart';
+import 'package:GsTravel/src/domain/repository/ProductsRepository.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
 
 class ProductsRepositoryImpl implements ProductsRepository {
   ProductsService productsService;

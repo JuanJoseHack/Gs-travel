@@ -1,5 +1,5 @@
-import 'package:ecommerce_v2/src/domain/models/AuthResponse.dart';
-import 'package:ecommerce_v2/src/presentation/utils/BlocFormItem.dart';
+import 'package:GsTravel/src/domain/models/AuthResponse.dart';
+import 'package:GsTravel/src/presentation/utils/BlocFormItem.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class LoginEvent extends Equatable {

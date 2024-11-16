@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:ecommerce_v2/src/domain/models/Product.dart';
-import 'package:ecommerce_v2/src/domain/repository/ProductsRepository.dart';
+import 'package:GsTravel/src/domain/models/Product.dart';
+import 'package:GsTravel/src/domain/repository/ProductsRepository.dart';
 
 class UpdateProductUseCase {
   ProductsRepository productsRepository;

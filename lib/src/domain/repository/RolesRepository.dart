@@ -1,5 +1,5 @@
-import 'package:ecommerce_v2/src/domain/models/Roles.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/domain/models/Roles.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
 
 abstract class RolesRepository {
   //Metodos de Roles

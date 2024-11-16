@@ -1,7 +1,7 @@
-import 'package:ecommerce_v2/src/domain/useCase/products/CreateProductUseCase.dart';
-import 'package:ecommerce_v2/src/domain/useCase/products/DeleteProductUseCase.dart';
-import 'package:ecommerce_v2/src/domain/useCase/products/GetProductsByCategoryUseCase.dart';
-import 'package:ecommerce_v2/src/domain/useCase/products/UpdateProductUseCase.dart';
+import 'package:GsTravel/src/domain/useCase/products/CreateProductUseCase.dart';
+import 'package:GsTravel/src/domain/useCase/products/DeleteProductUseCase.dart';
+import 'package:GsTravel/src/domain/useCase/products/GetProductsByCategoryUseCase.dart';
+import 'package:GsTravel/src/domain/useCase/products/UpdateProductUseCase.dart';
 
 class ProductsUseCases {
   CreateProductUseCase create;

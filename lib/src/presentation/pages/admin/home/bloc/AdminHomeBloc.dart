@@ -1,6 +1,6 @@
-import 'package:ecommerce_v2/src/domain/useCase/Auth/AuthUseCases.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/home/bloc/AdminHomeEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/admin/home/bloc/AdminHomeState.dart';
+import 'package:GsTravel/src/domain/useCase/Auth/AuthUseCases.dart';
+import 'package:GsTravel/src/presentation/pages/admin/home/bloc/AdminHomeEvent.dart';
+import 'package:GsTravel/src/presentation/pages/admin/home/bloc/AdminHomeState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AdminHomeBloc extends Bloc<AdminHomeEvent, AdminHomeState> {

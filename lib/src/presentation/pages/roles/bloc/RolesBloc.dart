@@ -1,7 +1,7 @@
-import 'package:ecommerce_v2/src/domain/models/AuthResponse.dart';
-import 'package:ecommerce_v2/src/domain/useCase/Auth/AuthUseCases.dart';
-import 'package:ecommerce_v2/src/presentation/pages/roles/bloc/RolesEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/roles/bloc/RolesState.dart';
+import 'package:GsTravel/src/domain/models/AuthResponse.dart';
+import 'package:GsTravel/src/domain/useCase/Auth/AuthUseCases.dart';
+import 'package:GsTravel/src/presentation/pages/roles/bloc/RolesEvent.dart';
+import 'package:GsTravel/src/presentation/pages/roles/bloc/RolesState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RolesBloc extends Bloc<RolesEvent, RolesState> {

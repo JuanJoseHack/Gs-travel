@@ -1,4 +1,4 @@
-import 'package:ecommerce_v2/src/domain/repository/CategoriesRepository.dart';
+import 'package:GsTravel/src/domain/repository/CategoriesRepository.dart';
 
 class DeleteCategoryUseCase {
   CategoriesRepository categoriesRepository;

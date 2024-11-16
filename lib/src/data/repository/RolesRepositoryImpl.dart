@@ -1,7 +1,7 @@
-import 'package:ecommerce_v2/src/data/dataSource/remote/service/RolesService.dart';
-import 'package:ecommerce_v2/src/domain/models/Roles.dart';
-import 'package:ecommerce_v2/src/domain/repository/RolesRepository.dart';
-import 'package:ecommerce_v2/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/data/dataSource/remote/service/RolesService.dart';
+import 'package:GsTravel/src/domain/models/Roles.dart';
+import 'package:GsTravel/src/domain/repository/RolesRepository.dart';
+import 'package:GsTravel/src/domain/utils/Resource.dart';
 
 class RolesRepositoryImpl implements RolesRepository {
   RolesService rolesService;

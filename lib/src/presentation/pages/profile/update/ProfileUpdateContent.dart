@@ -1,11 +1,11 @@
-import 'package:ecommerce_v2/src/domain/models/User.dart';
-import 'package:ecommerce_v2/src/presentation/pages/profile/update/bloc/ProfileUpdateBloc.dart';
-import 'package:ecommerce_v2/src/presentation/pages/profile/update/bloc/ProfileUpdateEvent.dart';
-import 'package:ecommerce_v2/src/presentation/pages/profile/update/bloc/ProfileUpdateState.dart';
-import 'package:ecommerce_v2/src/presentation/utils/BlocFormItem.dart';
-import 'package:ecommerce_v2/src/presentation/utils/SelectOptionImageDialog.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/DefaultIconBack.dart';
-import 'package:ecommerce_v2/src/presentation/widgest/DefaultTextField.dart';
+import 'package:GsTravel/src/domain/models/User.dart';
+import 'package:GsTravel/src/presentation/pages/profile/update/bloc/ProfileUpdateBloc.dart';
+import 'package:GsTravel/src/presentation/pages/profile/update/bloc/ProfileUpdateEvent.dart';
+import 'package:GsTravel/src/presentation/pages/profile/update/bloc/ProfileUpdateState.dart';
+import 'package:GsTravel/src/presentation/utils/BlocFormItem.dart';
+import 'package:GsTravel/src/presentation/utils/SelectOptionImageDialog.dart';
+import 'package:GsTravel/src/presentation/widgest/DefaultIconBack.dart';
+import 'package:GsTravel/src/presentation/widgest/DefaultTextField.dart';
 import 'package:flutter/material.dart';
 
 class ProfileUpdateContent extends StatelessWidget {

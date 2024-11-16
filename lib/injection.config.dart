@@ -8,40 +8,42 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:ecommerce_v2/src/data/dataSource/local/SharedPref.dart'
-    as _i990;
-import 'package:ecommerce_v2/src/data/dataSource/remote/service/AuthService.dart'
-    as _i619;
-import 'package:ecommerce_v2/src/data/dataSource/remote/service/CategoriesService.dart'
-    as _i262;
-import 'package:ecommerce_v2/src/data/dataSource/remote/service/ProductsService.dart'
-    as _i334;
-import 'package:ecommerce_v2/src/data/dataSource/remote/service/RolesService.dart'
-    as _i794;
-import 'package:ecommerce_v2/src/data/dataSource/remote/service/UsersService.dart'
-    as _i622;
-import 'package:ecommerce_v2/src/di/AppModule.dart' as _i179;
-import 'package:ecommerce_v2/src/domain/repository/AuthRepository.dart'
-    as _i196;
-import 'package:ecommerce_v2/src/domain/repository/CategoriesRepository.dart'
-    as _i2;
-import 'package:ecommerce_v2/src/domain/repository/ProductsRepository.dart'
-    as _i1025;
-import 'package:ecommerce_v2/src/domain/repository/RolesRepository.dart'
-    as _i308;
-import 'package:ecommerce_v2/src/domain/repository/UsersRepository.dart'
-    as _i533;
-import 'package:ecommerce_v2/src/domain/useCase/Auth/AuthUseCases.dart'
-    as _i649;
-import 'package:ecommerce_v2/src/domain/useCase/categories/CategoriesUseCases.dart'
-    as _i591;
-import 'package:ecommerce_v2/src/domain/useCase/products/ProductsUseCases.dart'
-    as _i590;
-import 'package:ecommerce_v2/src/domain/useCase/Roles/RolesUseCases.dart'
-    as _i1043;
-import 'package:ecommerce_v2/src/domain/useCase/users/UsersUseCases.dart'
-    as _i433;
 import 'package:get_it/get_it.dart' as _i174;
+import 'package:GsTravel/src/data/dataSource/local/SharedPref.dart' as _i260;
+import 'package:GsTravel/src/data/dataSource/remote/service/AddressService.dart'
+    as _i560;
+import 'package:GsTravel/src/data/dataSource/remote/service/AuthService.dart'
+    as _i270;
+import 'package:GsTravel/src/data/dataSource/remote/service/CategoriesService.dart'
+    as _i869;
+import 'package:GsTravel/src/data/dataSource/remote/service/ProductsService.dart'
+    as _i40;
+import 'package:GsTravel/src/data/dataSource/remote/service/RolesService.dart'
+    as _i304;
+import 'package:GsTravel/src/data/dataSource/remote/service/UsersService.dart'
+    as _i879;
+import 'package:GsTravel/src/di/AppModule.dart' as _i186;
+import 'package:GsTravel/src/domain/repository/AddressRepository.dart' as _i46;
+import 'package:GsTravel/src/domain/repository/AuthRepository.dart' as _i813;
+import 'package:GsTravel/src/domain/repository/CategoriesRepository.dart'
+    as _i814;
+import 'package:GsTravel/src/domain/repository/ProductsRepository.dart'
+    as _i1042;
+import 'package:GsTravel/src/domain/repository/RolesRepository.dart' as _i756;
+import 'package:GsTravel/src/domain/repository/ShoppingBagRepository.dart'
+    as _i739;
+import 'package:GsTravel/src/domain/repository/UsersRepository.dart' as _i243;
+import 'package:GsTravel/src/domain/useCase/address/AddressUseCases.dart'
+    as _i127;
+import 'package:GsTravel/src/domain/useCase/Auth/AuthUseCases.dart' as _i222;
+import 'package:GsTravel/src/domain/useCase/categories/CategoriesUseCases.dart'
+    as _i88;
+import 'package:GsTravel/src/domain/useCase/products/ProductsUseCases.dart'
+    as _i328;
+import 'package:GsTravel/src/domain/useCase/Roles/RolesUseCases.dart' as _i1010;
+import 'package:GsTravel/src/domain/useCase/ShoppingBag/ShoppingBagUseCases.dart'
+    as _i27;
+import 'package:GsTravel/src/domain/useCase/users/UsersUseCases.dart' as _i269;
 import 'package:injectable/injectable.dart' as _i526;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -56,25 +58,32 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final appModule = _$AppModule();
-    gh.factory<_i990.SharedPref>(() => appModule.sharedPref);
+    gh.factory<_i260.SharedPref>(() => appModule.sharedPref);
     gh.factoryAsync<String>(() => appModule.token);
-    gh.factory<_i619.AuthService>(() => appModule.authService);
-    gh.factory<_i622.UsersService>(() => appModule.usersService);
-    gh.factory<_i262.CategoriesService>(() => appModule.categoriesService);
-    gh.factory<_i334.ProductsService>(() => appModule.productsService);
-    gh.factory<_i196.AuthRepository>(() => appModule.authRepository);
-    gh.factory<_i533.UsersRepository>(() => appModule.usersRepository);
-    gh.factory<_i2.CategoriesRepository>(() => appModule.categoriesRepository);
-    gh.factory<_i1025.ProductsRepository>(() => appModule.productsRepository);
-    gh.factory<_i649.AuthUseCases>(() => appModule.authUseCases);
-    gh.factory<_i433.UsersUseCases>(() => appModule.usersUseCases);
-    gh.factory<_i591.CategoriesUseCases>(() => appModule.categoriesUseCases);
-    gh.factory<_i590.ProductsUseCases>(() => appModule.productsUseCases);
-    gh.factory<_i794.RolesService>(() => appModule.rolesService);
-    gh.factory<_i308.RolesRepository>(() => appModule.rolesRepository);
-    gh.factory<_i1043.RolesUseCases>(() => appModule.rolesUseCases);
+    gh.factory<_i270.AuthService>(() => appModule.authService);
+    gh.factory<_i879.UsersService>(() => appModule.usersService);
+    gh.factory<_i869.CategoriesService>(() => appModule.categoriesService);
+    gh.factory<_i40.ProductsService>(() => appModule.productsService);
+    gh.factory<_i304.RolesService>(() => appModule.rolesService);
+    gh.factory<_i560.AddressService>(() => appModule.addressService);
+    gh.factory<_i813.AuthRepository>(() => appModule.authRepository);
+    gh.factory<_i243.UsersRepository>(() => appModule.usersRepository);
+    gh.factory<_i814.CategoriesRepository>(
+        () => appModule.categoriesRepository);
+    gh.factory<_i1042.ProductsRepository>(() => appModule.productsRepository);
+    gh.factory<_i756.RolesRepository>(() => appModule.rolesRepository);
+    gh.factory<_i739.ShoppingBagRepository>(
+        () => appModule.shoppingBagRepository);
+    gh.factory<_i46.AddressRepository>(() => appModule.addressRepository);
+    gh.factory<_i222.AuthUseCases>(() => appModule.authUseCases);
+    gh.factory<_i269.UsersUseCases>(() => appModule.usersUseCases);
+    gh.factory<_i88.CategoriesUseCases>(() => appModule.categoriesUseCases);
+    gh.factory<_i328.ProductsUseCases>(() => appModule.productsUseCases);
+    gh.factory<_i1010.RolesUseCases>(() => appModule.rolesUseCases);
+    gh.factory<_i27.ShoppingBagUseCases>(() => appModule.shoppingBagUseCases);
+    gh.factory<_i127.AddressUseCases>(() => appModule.addressUseCases);
     return this;
   }
 }
 
-class _$AppModule extends _i179.AppModule {}
+class _$AppModule extends _i186.AppModule {}
