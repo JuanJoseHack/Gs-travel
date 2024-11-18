@@ -1,5 +1,7 @@
 import 'package:GsTravel/src/domain/models/Product.dart';
 import 'package:GsTravel/src/domain/useCase/ShoppingBag/ShoppingBagUseCases.dart';
+import 'package:GsTravel/src/presentation/pages/client/ShoppingBag/bloc/ClientShoppingBagBloc.dart';
+import 'package:GsTravel/src/presentation/pages/client/ShoppingBag/bloc/ClientShoppingBagEvent.dart';
 import 'package:GsTravel/src/presentation/pages/client/product/detail/bloc/ClientProductDetailEvent.dart';
 import 'package:GsTravel/src/presentation/pages/client/product/detail/bloc/ClientProductDetailState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,12 +43,20 @@ class ClientProductDetailBloc
 
   Future<void> _onAddProductToShoppingBag(AddProductToShoppingBag event,
       Emitter<ClientProductDetailState> emit) async {
+    // Asignar cantidad actual al producto
     event.product.quantity = state.quantity;
-    shoppingBagUseCases.add.run(event.product);
+
+    // Agregar producto al carrito mediante `shoppingBagUseCases`
+    await shoppingBagUseCases.add.run(event.product);
+
+    // Emitir nuevo estado para actualizar la cantidad total
     emit(state.copyWith(
       totalProductsInCart: state.totalProductsInCart + state.quantity,
-      quantity: 0, // Reinicia la cantidad para el próximo producto
+      quantity: 0, // Reinicia la cantidad para futuros productos
     ));
+
+    // Notificar al `ClientShoppingBagBloc` para que actualice el carrito
+    event.context.read<ClientShoppingBagBloc>().add(const GetShoppingBag());
   }
 
   Future<void> _onResetState(

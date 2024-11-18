@@ -39,7 +39,7 @@ class ClientShoppingBagItem extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            bloc?.add(SubtractItem(product: product!));
+            bloc?.add(SubtractItems(product: product!));
           },
           child: Container(
             width: 35,
@@ -71,7 +71,7 @@ class ClientShoppingBagItem extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            bloc?.add(AddItem(product: product!));
+            bloc?.add(AddItems(product: product!));
           },
           child: Container(
             width: 35,

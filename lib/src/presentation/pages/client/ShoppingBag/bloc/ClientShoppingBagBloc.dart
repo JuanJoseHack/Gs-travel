@@ -11,8 +11,8 @@ class ClientShoppingBagBloc
   ClientShoppingBagBloc(this.shoppingBagUseCases)
       : super(ClientShoppingBagState()) {
     on<GetShoppingBag>(_onGetShoppingBag);
-    on<AddItem>(_onAddItem);
-    on<SubtractItem>(_onSubtractItem);
+    on<AddItems>(_onAddItem);
+    on<SubtractItems>(_onSubtractItem);
     on<RemoveItem>(_onRemoveItem);
     on<GetTotal>(_onGetTotal);
   }
@@ -25,14 +25,15 @@ class ClientShoppingBagBloc
   }
 
   Future<void> _onAddItem(
-      AddItem event, Emitter<ClientShoppingBagState> emit) async {
+      AddItems event, Emitter<ClientShoppingBagState> emit) async {
     event.product.quantity = event.product.quantity! + 1;
     await shoppingBagUseCases.add.run(event.product);
+    // Actualizar la lista de productos en el estado
     add(GetShoppingBag());
   }
 
   Future<void> _onSubtractItem(
-      SubtractItem event, Emitter<ClientShoppingBagState> emit) async {
+      SubtractItems event, Emitter<ClientShoppingBagState> emit) async {
     if (event.product.quantity! > 1) {
       event.product.quantity = event.product.quantity! - 1;
       await shoppingBagUseCases.add.run(event.product);

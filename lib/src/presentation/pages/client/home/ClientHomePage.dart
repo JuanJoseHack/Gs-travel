@@ -1,8 +1,11 @@
+import 'package:GsTravel/src/presentation/pages/client/ShoppingBag/bloc/ClientShoppingBagBloc.dart';
+import 'package:GsTravel/src/presentation/pages/client/ShoppingBag/bloc/ClientShoppingBagState.dart';
 import 'package:GsTravel/src/presentation/pages/client/home/ClientCategoryPage.dart';
 import 'package:GsTravel/src/presentation/pages/client/home/ClientProductPage%20.dart';
 import 'package:GsTravel/src/presentation/pages/client/home/bloc/ClientHomeBloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:badges/badges.dart' as badges;
 
 class ClientHomePage extends StatefulWidget {
   const ClientHomePage({super.key});
@@ -51,13 +54,30 @@ class _ClientHomePageState extends State<ClientHomePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, 'client/shopping_bag'); // Navegar al carrito
+                  BlocBuilder<ClientShoppingBagBloc, ClientShoppingBagState>(
+                    builder: (context, shoppingBagState) {
+                      // Calcular la cantidad total de productos en el carrito
+                      int totalProductsInCart = shoppingBagState.products
+                          .fold(0, (sum, item) => sum + (item.quantity ?? 0));
+
+                      return badges.Badge(
+                        showBadge: totalProductsInCart >
+                            0, // Mostrar solo si hay productos
+                        position: badges.BadgePosition.topEnd(top: 0, end: 3),
+                        badgeContent: Text(
+                          totalProductsInCart.toString(),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.shopping_cart_outlined,
+                              color: Colors.white),
+                          onPressed: () {
+                            // Acción del carrito
+                            Navigator.pushNamed(context, 'client/shopping_bag');
+                          },
+                        ),
+                      );
                     },
-                    icon:
-                        Icon(Icons.shopping_cart_outlined, color: Colors.white),
                   ),
                 ],
               ),

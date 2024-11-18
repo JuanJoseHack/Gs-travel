@@ -69,7 +69,7 @@ class _ClientProductListPageState extends State<ClientProductListPage> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.shopping_cart,
+            icon: const Icon(Icons.shopping_cart_outlined,
                 color: Colors.white), // Carrito en blanco
             onPressed: () {
               // Acción del carrito

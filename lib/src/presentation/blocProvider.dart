@@ -17,6 +17,7 @@ import 'package:GsTravel/src/presentation/pages/auth/login/bloc/LoginEvent.dart'
 import 'package:GsTravel/src/presentation/pages/auth/register/bloc/RegisterBloc.dart';
 import 'package:GsTravel/src/presentation/pages/auth/register/bloc/RegisterEvent.dart';
 import 'package:GsTravel/src/presentation/pages/client/ShoppingBag/bloc/ClientShoppingBagBloc.dart';
+import 'package:GsTravel/src/presentation/pages/client/ShoppingBag/bloc/ClientShoppingBagEvent.dart';
 import 'package:GsTravel/src/presentation/pages/client/address/create/bloc/ClientAddressCreateBloc.dart';
 import 'package:GsTravel/src/presentation/pages/client/address/create/bloc/ClientAddressCreateEvent.dart';
 import 'package:GsTravel/src/presentation/pages/client/address/list/bloc/ClientAddressListBloc.dart';
@@ -71,4 +72,9 @@ List<BlocProvider> blocProvider = [
       create: (context) => ClientAddressCreateBloc(
           locator<AddressUseCases>(), locator<AuthUseCases>())
         ..add(ClientAddressCreateInitEvent())),
+  BlocProvider<ClientShoppingBagBloc>(
+    create: (context) => ClientShoppingBagBloc(locator<ShoppingBagUseCases>())
+      ..add(
+          GetShoppingBag()), // Este evento inicializa el estado con los productos en el carrito
+  ),
 ];

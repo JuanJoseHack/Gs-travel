@@ -1,5 +1,6 @@
 import 'package:GsTravel/src/domain/models/Product.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class ClientProductDetailEvent extends Equatable {
   const ClientProductDetailEvent();
@@ -32,9 +33,10 @@ class SubtractItem extends ClientProductDetailEvent {
 
 class AddProductToShoppingBag extends ClientProductDetailEvent {
   final Product product;
-  const AddProductToShoppingBag({required this.product});
+  final BuildContext context;
+  const AddProductToShoppingBag({required this.product, required this.context});
   @override
-  List<Object?> get props => [product];
+  List<Object?> get props => [product, context];
 }
 
 class ResetQuantityCounter extends ClientProductDetailEvent {
