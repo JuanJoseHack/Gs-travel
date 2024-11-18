@@ -18,6 +18,43 @@ class ClientCategoryPage extends StatelessWidget {
     _bloc.add(GetCategories());
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.purple,
+        centerTitle: true,
+        title: const Text(
+          'Categorías',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            color: Colors.white, // Título en color blanco
+          ),
+        ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back,
+              color: Colors.white), // Flecha en blanco
+          onPressed: () {
+            Navigator.pop(context); // Volver a la página anterior
+          },
+        ),
+        actions: [
+          IconButton(
+            icon:
+                const Icon(Icons.search, color: Colors.white), // Lupa en blanco
+            onPressed: () {
+              // Acción de búsqueda
+              print('Buscar');
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.shopping_cart,
+                color: Colors.white), // Carrito en blanco
+            onPressed: () {
+              // Acción del carrito
+              Navigator.pushNamed(context, 'client/shopping_bag');
+            },
+          ),
+        ],
+      ),
       body: BlocBuilder<ClienteCategoryListBloc, ClienteCategoryListState>(
         builder: (context, state) {
           final response = state.response;
@@ -28,17 +65,17 @@ class ClientCategoryPage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3, // Número de columnas en la cuadrícula
-                  childAspectRatio: 0.8, // Relación de aspecto de cada tarjeta
-                  crossAxisSpacing: 10, // Espacio horizontal entre tarjetas
-                  mainAxisSpacing: 10, // Espacio vertical entre tarjetas
+                  crossAxisCount: 3, // Número de columnas
+                  childAspectRatio: 0.9, // Ajusta el aspecto entre ancho y alto
+                  crossAxisSpacing: 15, // Espacio horizontal entre celdas
+                  mainAxisSpacing: 15, // Espacio vertical entre celdas
                 ),
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
                   final category = categories[index];
                   return GestureDetector(
                     onTap: () {
-                      // Acciones al hacer clic en una categoría
+                      // Navegar a la lista de productos por categoría
                       Navigator.pushNamed(
                         context,
                         'client/product/list',
@@ -46,25 +83,30 @@ class ClientCategoryPage extends StatelessWidget {
                       );
                     },
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Expanded(
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(15),
                             child: category.image != null
                                 ? Image.network(
                                     category.image!,
                                     fit: BoxFit.cover,
                                   )
                                 : Image.asset(
-                                    'assets/img/no-image.png'), // Imagen por defecto
+                                    'assets/img/no-image.png', // Imagen por defecto
+                                    fit: BoxFit.cover,
+                                  ),
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 5),
                         Text(
                           category.name ?? '',
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.w500),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ],
                     ),
@@ -75,7 +117,12 @@ class ClientCategoryPage extends StatelessWidget {
           } else if (response is Loading) {
             return const Center(child: CircularProgressIndicator());
           } else {
-            return const Center(child: Text('Error al cargar categorías'));
+            return const Center(
+              child: Text(
+                'Error al cargar categorías',
+                style: TextStyle(fontSize: 16, color: Colors.red),
+              ),
+            );
           }
         },
       ),

@@ -150,4 +150,27 @@ class ProductsService {
       return Error(e.toString());
     }
   }
+
+  Future<Resource<List<Product>>> getAllProducts() async {
+    try {
+      // Asegúrate de que tu backend tenga un endpoint para obtener todos los productos
+      Uri url = Uri.https(ApiConfig.API_ECOMMECE, '/products');
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "Authorization": await token
+      };
+      final response = await http.get(url, headers: headers);
+      final data = json.decode(response.body);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        List<Product> products = Product.fromJsonList(data);
+        return Success(products);
+      } else {
+        // ERROR
+        return Error(ListToString(data['message']));
+      }
+    } catch (e) {
+      print('Error: $e');
+      return Error(e.toString());
+    }
+  }
 }

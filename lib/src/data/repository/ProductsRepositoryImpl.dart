@@ -33,4 +33,9 @@ class ProductsRepositoryImpl implements ProductsRepository {
       return productsService.update(id, product);
     }
   }
+
+  @override
+  Future<Resource<List<Product>>> getAllProducts() {
+    return productsService.getAllProducts(); // Aquí llamas al nuevo método
+  }
 }

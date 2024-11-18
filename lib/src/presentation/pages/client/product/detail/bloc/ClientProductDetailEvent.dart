@@ -36,3 +36,8 @@ class AddProductToShoppingBag extends ClientProductDetailEvent {
   @override
   List<Object?> get props => [product];
 }
+
+class ResetQuantityCounter extends ClientProductDetailEvent {
+  @override
+  List<Object> get props => [];
+}

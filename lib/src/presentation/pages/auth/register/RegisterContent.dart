@@ -19,9 +19,10 @@ class RegisterContent extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
+          _buttonGoToLogin(context),
           _buildBackgroundImage(context),
           _buildLogo(),
-          _buildFormContainer(context),
+          _buildFormContainerWithButton(context),
         ],
       ),
     );
@@ -52,7 +53,7 @@ class RegisterContent extends StatelessWidget {
 
   Widget _buildLogo() {
     return Positioned(
-      top: 35,
+      top: 50,
       child: Image.asset(
         'assets/logogs.png',
         height: 90,
@@ -60,68 +61,108 @@ class RegisterContent extends StatelessWidget {
     );
   }
 
-  Widget _buildFormContainer(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.85,
-      height: MediaQuery.of(context).size.height * 0.75,
-      margin: EdgeInsets.only(top: 130),
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(255, 255, 255, 1),
-        borderRadius: BorderRadius.all(Radius.circular(25)),
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 20),
-            Text(
-              'Bienvenido a GS Travel',
-              style: TextStyle(
-                fontSize: 19,
-                color: const Color.fromARGB(255, 0, 0, 0),
-                fontWeight: FontWeight.bold,
+  Widget _buildFormContainerWithButton(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width * 0.85,
+          height: MediaQuery.of(context).size.height * 0.75,
+          margin: EdgeInsets.only(
+              top: 175, left: 30), // Mueve el contenedor a la derecha
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(255, 255, 255, 1),
+            borderRadius: BorderRadius.all(Radius.circular(25)),
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 110), // Espacio para el botón
+                Text(
+                  'Bienvenido a GS Travel',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: const Color.fromARGB(255, 0, 0, 0),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 30),
+                _buildTextField(
+                  label: 'NOMBRE',
+                  onChanged: (text) => bloc?.add(
+                      RegisterNameChanged(name: BlocFormItem(value: text))),
+                ),
+                SizedBox(height: 10),
+                _buildTextField(
+                  label: 'APELLIDO',
+                  onChanged: (text) => bloc?.add(RegisterLastnameChanged(
+                      lastname: BlocFormItem(value: text))),
+                ),
+                SizedBox(height: 10),
+                _buildTextField(
+                  label: 'CORREO ELECTRONICO',
+                  onChanged: (text) => bloc?.add(
+                      RegisterEmailChanged(email: BlocFormItem(value: text))),
+                ),
+                SizedBox(height: 10),
+                _buildTextField(
+                  label: 'TELÉFONO',
+                  onChanged: (text) => bloc?.add(
+                      RegisterPhoneChanged(phone: BlocFormItem(value: text))),
+                ),
+                SizedBox(height: 10),
+                _buildTextField(
+                  label: 'CONTRASEÑA',
+                  obscureText: true,
+                  onChanged: (text) => bloc?.add(RegisterPasswordChanged(
+                      password: BlocFormItem(value: text))),
+                ),
+                SizedBox(height: 10),
+                _buildTextField(
+                  label: 'CONFIRMAR CONTRASEÑA',
+                  obscureText: true,
+                  onChanged: (text) => bloc?.add(RegisterConfirmPasswordChanged(
+                      confirmPassword: BlocFormItem(value: text))),
+                ),
+                SizedBox(height: 20),
+                _buildRegisterButton(context),
+              ],
+            ),
+          ),
+        ),
+        _buttonGoToLogin(context), // Añadir el botón de "Ingresar"
+      ],
+    );
+  }
+
+  Widget _buttonGoToLogin(BuildContext context) {
+    return Align(
+      alignment: Alignment.topRight,
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.3,
+        height: 45,
+        margin:
+            EdgeInsets.only(top: 207, right: 31), // Ajusta el margen derecho
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context); // Cierra la pantalla actualavegar a login
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color.fromARGB(255, 83, 139, 63),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
               ),
             ),
-            SizedBox(height: 20),
-            _buildTextField(
-              label: 'NOMBRE',
-              onChanged: (text) => bloc
-                  ?.add(RegisterNameChanged(name: BlocFormItem(value: text))),
+          ),
+          child: Text(
+            'Ingresar',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
             ),
-            SizedBox(height: 10),
-            _buildTextField(
-              label: 'APELLIDO',
-              onChanged: (text) => bloc?.add(
-                  RegisterLastnameChanged(lastname: BlocFormItem(value: text))),
-            ),
-            SizedBox(height: 10),
-            _buildTextField(
-              label: 'CORREO ELECTRONICO',
-              onChanged: (text) => bloc
-                  ?.add(RegisterEmailChanged(email: BlocFormItem(value: text))),
-            ),
-            SizedBox(height: 10),
-            _buildTextField(
-              label: 'TELÉFONO',
-              onChanged: (text) => bloc
-                  ?.add(RegisterPhoneChanged(phone: BlocFormItem(value: text))),
-            ),
-            SizedBox(height: 10),
-            _buildTextField(
-              label: 'CONTRASEÑA',
-              obscureText: true,
-              onChanged: (text) => bloc?.add(
-                  RegisterPasswordChanged(password: BlocFormItem(value: text))),
-            ),
-            SizedBox(height: 10),
-            _buildTextField(
-              label: 'CONFIRMAR CONTRASEÑA',
-              obscureText: true,
-              onChanged: (text) => bloc?.add(RegisterConfirmPasswordChanged(
-                  confirmPassword: BlocFormItem(value: text))),
-            ),
-            SizedBox(height: 20),
-            _buildRegisterButton(context),
-          ],
+          ),
         ),
       ),
     );

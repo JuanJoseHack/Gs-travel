@@ -23,21 +23,21 @@ class LoginContent extends StatelessWidget {
           // Logo colocado encima de todo
           Positioned(
             top: MediaQuery.of(context).size.height *
-                0.09, // Ajusta la altura del logo
+                0.04, // Ajusta la altura del logo
             child: Image.asset(
               'assets/logogs.png', // Ruta de tu logo
-              width: 200, // Ajusta el tamaño del logo
-              height: 100,
+              width: 230, // Ajusta el tamaño del logo
+              height: 230,
             ),
           ),
 
           // Container que contiene el formulario y los botones
           Positioned(
             top: MediaQuery.of(context).size.height *
-                0.33, // Ajusta la posición del Container aquí
+                0.35, // Ajusta la posición del Container aquí
             child: Container(
               width: MediaQuery.of(context).size.width * 0.80,
-              height: MediaQuery.of(context).size.height * 0.60,
+              height: MediaQuery.of(context).size.height * 0.55,
               decoration: BoxDecoration(
                 color: Color.fromRGBO(255, 255, 255, 1),
                 borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -74,7 +74,7 @@ class LoginContent extends StatelessWidget {
           ),
         ),
         SizedBox(
-            height: 20), // Agrega un espacio de 20 píxeles debajo del texto
+            height: 40), // Agrega un espacio de 20 píxeles debajo del texto
       ],
     );
   }
@@ -85,8 +85,8 @@ class LoginContent extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width *
             0.30, // Ajusta el ancho si es necesario
-        height: 40,
-        margin: EdgeInsets.only(top: 0, bottom: 10),
+        height: 45,
+        margin: EdgeInsets.only(top: 0, bottom: 30),
         child: ElevatedButton(
           onPressed: () {
             Navigator.pushNamed(context, 'register');
@@ -110,7 +110,7 @@ class LoginContent extends StatelessWidget {
             'REGISTRATE',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 10,
+              fontSize: 12,
             ),
           ),
         ),

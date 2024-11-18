@@ -14,3 +14,5 @@ class GetProductsByCategory extends ClienteProductListEvent {
   @override
   List<Object?> get props => [idCategory];
 }
+
+class GetAllProducts extends ClienteProductListEvent {}

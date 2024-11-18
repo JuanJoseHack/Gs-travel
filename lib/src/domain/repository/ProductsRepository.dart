@@ -9,4 +9,5 @@ abstract class ProductsRepository {
   Future<Resource<Product>> update(
       int id, Product product, List<File>? files, List<int>? imagesToUpdate);
   Future<Resource<bool>> delete(int id);
+  Future<Resource<List<Product>>> getAllProducts();
 }

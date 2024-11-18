@@ -12,6 +12,7 @@ import 'package:GsTravel/src/presentation/pages/client/ShoppingBag/ClientShoppin
 import 'package:GsTravel/src/presentation/pages/client/address/create/ClientAddressCreatePage.dart';
 import 'package:GsTravel/src/presentation/pages/client/address/list/ClientAddressListPage.dart';
 import 'package:GsTravel/src/presentation/pages/client/home/ClientHomePage.dart';
+import 'package:GsTravel/src/presentation/pages/client/home/ClientProductPage%20.dart';
 import 'package:GsTravel/src/presentation/pages/client/homestatic/home_page.dart';
 import 'package:GsTravel/src/presentation/pages/client/homestatic/welcome_page.dart';
 import 'package:GsTravel/src/presentation/pages/client/product/detail/ClientProductDetailPage.dart';
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
           'welcome': (BuildContext context) => WelcomePage(),
           'register': (BuildContext context) => RegisterPage(),
           'client/home': (BuildContext context) => ClientHomePage(),
+          'client/home/product': (BuildContext context) => ClientProductPage(),
           'admin/home': (BuildContext context) => AdminHomePage(),
           'profile/info': (BuildContext context) => ProfileInfoPage(),
           'profile/update': (BuildContext context) => ProfileUpdatePage(),

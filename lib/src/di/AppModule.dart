@@ -49,6 +49,7 @@ import 'package:GsTravel/src/domain/useCase/categories/GetCategoriesUseCase.dart
 import 'package:GsTravel/src/domain/useCase/categories/UpdateCategoryUseCase.dart';
 import 'package:GsTravel/src/domain/useCase/products/CreateProductUseCase.dart';
 import 'package:GsTravel/src/domain/useCase/products/DeleteProductUseCase.dart';
+import 'package:GsTravel/src/domain/useCase/products/GetAllProductsUseCase.dart';
 import 'package:GsTravel/src/domain/useCase/products/GetProductsByCategoryUseCase.dart';
 import 'package:GsTravel/src/domain/useCase/products/ProductsUseCases.dart';
 import 'package:GsTravel/src/domain/useCase/products/UpdateProductUseCase.dart';
@@ -90,6 +91,7 @@ abstract class AppModule {
 
   @injectable
   AddressService get addressService => AddressService(token);
+
   // Repositories
   @injectable
   AuthRepository get authRepository =>
@@ -145,6 +147,7 @@ abstract class AppModule {
         getProductsByCategory: GetProductsByCategoryUseCase(productsRepository),
         update: UpdateProductUseCase(productsRepository),
         delete: DeleteProductUseCase(productsRepository),
+        getallproduct: GetAllProductsUseCase(productsRepository),
       );
 
   @injectable

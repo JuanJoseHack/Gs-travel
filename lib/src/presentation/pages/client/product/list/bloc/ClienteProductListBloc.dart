@@ -11,6 +11,7 @@ class ClienteProductListBloc
   ClienteProductListBloc(this.productsUseCases)
       : super(ClienteProductListState()) {
     on<GetProductsByCategory>(_onGetProductsByCategory);
+    on<GetAllProducts>(_onGetAllProducts);
   }
 
   Future<void> _onGetProductsByCategory(GetProductsByCategory event,
@@ -18,6 +19,13 @@ class ClienteProductListBloc
     emit(state.copyWith(response: Loading()));
     Resource response =
         await productsUseCases.getProductsByCategory.run(event.idCategory);
+    emit(state.copyWith(response: response));
+  }
+
+  Future<void> _onGetAllProducts(
+      GetAllProducts event, Emitter<ClienteProductListState> emit) async {
+    emit(state.copyWith(response: Loading()));
+    Resource response = await productsUseCases.getallproduct.run();
     emit(state.copyWith(response: response));
   }
 }

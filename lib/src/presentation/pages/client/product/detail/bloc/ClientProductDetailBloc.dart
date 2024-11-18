@@ -15,6 +15,7 @@ class ClientProductDetailBloc
     on<SubtractItem>(_onSubtractItem);
     on<AddProductToShoppingBag>(_onAddProductToShoppingBag);
     on<ResetState>(_onResetState);
+    on<ResetQuantityCounter>(_onResetQuantityCounter);
   }
 
   Future<void> _onGetProducts(
@@ -42,10 +43,19 @@ class ClientProductDetailBloc
       Emitter<ClientProductDetailState> emit) async {
     event.product.quantity = state.quantity;
     shoppingBagUseCases.add.run(event.product);
+    emit(state.copyWith(
+      totalProductsInCart: state.totalProductsInCart + state.quantity,
+      quantity: 0, // Reinicia la cantidad para el próximo producto
+    ));
   }
 
   Future<void> _onResetState(
       ResetState event, Emitter<ClientProductDetailState> emit) async {
+    emit(state.copyWith(quantity: 0));
+  }
+
+  Future<void> _onResetQuantityCounter(ResetQuantityCounter event,
+      Emitter<ClientProductDetailState> emit) async {
     emit(state.copyWith(quantity: 0));
   }
 }
