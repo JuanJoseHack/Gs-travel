@@ -50,6 +50,7 @@ dependencies:
   shared_preferences: ^2.3.2
   flutter_image_slideshow: ^0.1.6
   badges: ^2.0.3
+  pay: ^2.0.0
 
 dev_dependencies:
   flutter_test:

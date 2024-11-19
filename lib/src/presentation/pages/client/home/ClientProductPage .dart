@@ -24,24 +24,42 @@ class ClientProductPage extends StatelessWidget {
     Map<int, String> categoryEmojis = {
       1: '🍕', // Comida
       2: '✈️', // Viajes
-      3: '🧃', // bebidas
-      4: '🍪', // snacks
+      3: '🧃', // Bebidas
+      4: '🍪', // Snacks
     };
 
-    // Cargar productos y categorías al mostrar la página
+    // Cargar productos y categorías solo al iniciar
     productBloc.add(GetAllProducts());
     categoryBloc.add(GetCategories());
 
     return Scaffold(
       body: BlocBuilder<ClienteCategoryListBloc, ClienteCategoryListState>(
         builder: (context, categoryState) {
-          if (categoryState.response is Success) {
+          if (categoryState.response is Loading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (categoryState.response is Error) {
+            return Center(
+              child: Text(
+                'Error al cargar categorías: ${(categoryState.response as Error).message}',
+                style: const TextStyle(color: Colors.red),
+              ),
+            );
+          } else if (categoryState.response is Success) {
             List<Category> categories =
                 (categoryState.response as Success).data as List<Category>;
 
             return BlocBuilder<ClienteProductListBloc, ClienteProductListState>(
               builder: (context, productState) {
-                if (productState.response is Success) {
+                if (productState.response is Loading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (productState.response is Error) {
+                  return Center(
+                    child: Text(
+                      'Error al cargar productos: ${(productState.response as Error).message}',
+                      style: const TextStyle(color: Colors.red),
+                    ),
+                  );
+                } else if (productState.response is Success) {
                   List<Product> products =
                       (productState.response as Success).data as List<Product>;
 
@@ -148,12 +166,12 @@ class ClientProductPage extends StatelessWidget {
                     },
                   );
                 } else {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(child: Text('Sin datos disponibles.'));
                 }
               },
             );
           } else {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: Text('Estado desconocido.'));
           }
         },
       ),

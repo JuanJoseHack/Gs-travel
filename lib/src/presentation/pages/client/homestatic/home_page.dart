@@ -23,8 +23,7 @@ class HomePage extends StatelessWidget {
             context, 'client/home'); // Ruta para Store
         break;
       case 3:
-        Navigator.pushReplacementNamed(
-            context, 'profile/info'); // Ruta para Profile
+        Navigator.pushNamed(context, 'profile/info'); // Ruta para Profile
         break;
     }
   }
