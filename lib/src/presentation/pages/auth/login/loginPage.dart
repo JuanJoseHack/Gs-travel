@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
               // Si el  rol es 'CLIENT', redirigir al HomePage del cliente
               WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                 Navigator.pushNamedAndRemoveUntil(
-                    context, 'client/home', (route) => false);
+                    context, 'home', (route) => false);
               });
             } else {
               // Si el  rol es 'ADMIN', redirigir al HomePage del cliente

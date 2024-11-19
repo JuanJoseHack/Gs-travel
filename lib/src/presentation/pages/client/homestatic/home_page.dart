@@ -1,86 +1,110 @@
-import 'package:GsTravel/src/presentation/pages/profile/info/ProfileInfoPage.dart';
-import 'package:GsTravel/src/presentation/widgest/custom_icon_button.dart';
 import 'package:GsTravel/src/presentation/pages/client/homestatic/location_card.dart';
 import 'package:GsTravel/src/presentation/pages/client/homestatic/nearby_places.dart';
 import 'package:GsTravel/src/presentation/pages/client/homestatic/recommended_places.dart';
 import 'package:GsTravel/src/presentation/pages/client/homestatic/tourist_places.dart';
+import 'package:GsTravel/src/presentation/widgest/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0; // Índice del BottomNavigationBar
-
-  // Lista de páginas para cada índice
-  final List<Widget> _pages = [
-    const HomeContent(), // Contenido para Home
-    const Center(child: Text("Bookmark")), // Bookmark Page
-    const Center(child: Text("Store")), // Página de tienda
-    const ProfileInfoPage(), // Página de perfil
-  ];
-
-  // Método para cambiar el índice seleccionado
-  void _onItemTapped(int index) {
-    // Elimina el redireccionamiento y actualiza solo el índice
-    setState(() {
-      _selectedIndex = index;
-    });
+  void _onItemTapped(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        Navigator.pushReplacementNamed(context, 'home'); // Ruta para Home
+        break;
+      case 1:
+        Navigator.pushReplacementNamed(
+            context, '/bookmark'); // Ruta para Bookmark
+        break;
+      case 2:
+        Navigator.pushReplacementNamed(
+            context, 'client/home'); // Ruta para Store
+        break;
+      case 3:
+        Navigator.pushReplacementNamed(
+            context, 'profile/info'); // Ruta para Profile
+        break;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _selectedIndex == 0 // Mostrar AppBar solo en HomeContent
-          ? AppBar(
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              foregroundColor: Colors.black,
-              title: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text("Bienvenido"),
-                  Text(
-                    "Juan Jose",
-                    style: Theme.of(context).textTheme.labelMedium,
-                  ),
-                ],
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.black,
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text("Bienvenido"),
+            Text(
+              "Mark Landeo",
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
+          ],
+        ),
+        actions: const [
+          CustomIconButton(
+            icon: Icon(Ionicons.search_outline),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 8.0, right: 12),
+            child: CustomIconButton(
+              icon: Icon(Ionicons.notifications_outline),
+            ),
+          ),
+        ],
+      ),
+      body: ListView(
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(14),
+        children: [
+          const LocationCard(),
+          const SizedBox(height: 15),
+          const TouristPlaces(),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Recomendación",
+                style: Theme.of(context).textTheme.titleLarge,
               ),
-              actions: const [
-                CustomIconButton(
-                  icon: Icon(Ionicons.search_outline),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 8.0, right: 12),
-                  child: CustomIconButton(
-                    icon: Icon(Ionicons.notifications_outline),
-                  ),
-                ),
-              ],
-            )
-          : null, // No mostrar AppBar en las otras páginas
-      body: IndexedStack(
-        index: _selectedIndex, // Muestra la página correspondiente al índice
-        children: _pages,
+              TextButton(onPressed: () {}, child: const Text("Ver Todo")),
+            ],
+          ),
+          const SizedBox(height: 10),
+          const RecommendedPlaces(),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Cerca de ti",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              TextButton(onPressed: () {}, child: const Text("Ver Todo")),
+            ],
+          ),
+          const SizedBox(height: 10),
+          const NearbyPlaces(),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        currentIndex: _selectedIndex, // Establece el índice actual
-        onTap: _onItemTapped, // Maneja el evento de tap
+        onTap: (index) => _onItemTapped(context, index),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Ionicons.home_outline),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Ionicons.bookmark_outline),
+            icon: Icon(Ionicons.chatbox_outline),
             label: "Bookmark",
           ),
           BottomNavigationBarItem(
@@ -93,50 +117,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-    );
-  }
-}
-
-// Contenido principal para la pestaña Home
-class HomeContent extends StatelessWidget {
-  const HomeContent({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.all(14),
-      children: [
-        const LocationCard(),
-        const SizedBox(height: 15),
-        const TouristPlaces(),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "Recomendación",
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            TextButton(onPressed: () {}, child: const Text("Ver Todo")),
-          ],
-        ),
-        const SizedBox(height: 10),
-        const RecommendedPlaces(),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "Cerca de ti",
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            TextButton(onPressed: () {}, child: const Text("Ver todo")),
-          ],
-        ),
-        const SizedBox(height: 10),
-        const NearbyPlaces(),
-      ],
     );
   }
 }

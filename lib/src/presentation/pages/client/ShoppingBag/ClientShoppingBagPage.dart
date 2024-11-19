@@ -29,16 +29,36 @@ class _ClientShoppingBagPageState extends State<ClientShoppingBagPage> {
     _bloc = BlocProvider.of<ClientShoppingBagBloc>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mi orden'),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        elevation: 0,
+        centerTitle: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20), // Bordes redondeados
+          ),
+        ),
+        title: const Text(
+          'Mi carrito',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context); // Acción al presionar el botón de regreso
+          },
+        ),
       ),
       body: BlocBuilder<ClientShoppingBagBloc, ClientShoppingBagState>(
         builder: (context, state) {
           return ListView.builder(
-              itemCount: state.products.length,
-              itemBuilder: (context, index) {
-                return ClientShoppingBagItem(
-                    _bloc, state, state.products[index]);
-              });
+            itemCount: state.products.length,
+            itemBuilder: (context, index) {
+              return ClientShoppingBagItem(_bloc, state, state.products[index]);
+            },
+          );
         },
       ),
       bottomNavigationBar:

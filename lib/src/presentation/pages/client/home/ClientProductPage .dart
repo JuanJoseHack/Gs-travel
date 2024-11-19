@@ -33,9 +33,6 @@ class ClientProductPage extends StatelessWidget {
     categoryBloc.add(GetCategories());
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Productos por Categoría'),
-      ),
       body: BlocBuilder<ClienteCategoryListBloc, ClienteCategoryListState>(
         builder: (context, categoryState) {
           if (categoryState.response is Success) {

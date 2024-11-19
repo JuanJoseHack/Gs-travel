@@ -37,13 +37,14 @@ class _ClientHomePageState extends State<ClientHomePage> {
     return Scaffold(
       appBar: showAppBar
           ? AppBar(
-              backgroundColor: Colors.purple,
+              backgroundColor: Colors.green,
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
                     onPressed: () {
-                      Navigator.pop(context); // Botón para cerrar
+                      Navigator.pushReplacementNamed(
+                          context, 'home'); // Botón para cerrar
                     },
                     icon: Icon(Icons.close, color: Colors.white),
                   ),
@@ -137,7 +138,7 @@ class _ClientHomePageState extends State<ClientHomePage> {
           _buildBottomNavItem(Icons.shopping_bag, 'Mis Pedidos', 2),
           _buildBottomNavItem(Icons.headset_mic, 'Ayuda', 3),
         ],
-        selectedItemColor: Colors.purple, // Color del ítem seleccionado
+        selectedItemColor: Colors.green, // Color del ítem seleccionado
         unselectedItemColor: Colors.black54, // Color de ítems no seleccionados
         backgroundColor: Colors.white,
       ),
@@ -152,12 +153,12 @@ class _ClientHomePageState extends State<ClientHomePage> {
       icon: Container(
         decoration: isSelected
             ? BoxDecoration(
-                color: Colors.purple.shade100, // Color del círculo
+                color: Colors.green.shade100, // Color del círculo
                 shape: BoxShape.circle,
               )
             : null,
         padding: EdgeInsets.all(8), // Espaciado dentro del círculo
-        child: Icon(icon, color: isSelected ? Colors.purple : Colors.black54),
+        child: Icon(icon, color: isSelected ? Colors.green : Colors.black54),
       ),
       label: label,
     );

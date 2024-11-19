@@ -22,7 +22,7 @@ class ClientCategoryPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.green,
         centerTitle: true,
         title: const Text(
           'Categorias',
@@ -36,7 +36,8 @@ class ClientCategoryPage extends StatelessWidget {
           icon: const Icon(Icons.arrow_back,
               color: Colors.white), // Flecha en blanco
           onPressed: () {
-            Navigator.pop(context); // Volver a la página anterior
+            Navigator.pushReplacementNamed(
+                context, 'client/home'); // Volver a la página anterior
           },
         ),
         actions: [

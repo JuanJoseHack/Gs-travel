@@ -1,6 +1,8 @@
 import 'package:GsTravel/src/domain/models/Category.dart';
 import 'package:GsTravel/src/domain/models/Product.dart';
 import 'package:GsTravel/src/domain/utils/Resource.dart';
+import 'package:GsTravel/src/presentation/pages/client/ShoppingBag/bloc/ClientShoppingBagBloc.dart';
+import 'package:GsTravel/src/presentation/pages/client/ShoppingBag/bloc/ClientShoppingBagState.dart';
 import 'package:GsTravel/src/presentation/pages/client/product/list/ClienteProductListItem.dart';
 import 'package:GsTravel/src/presentation/pages/client/product/list/bloc/ClienteProductListBloc.dart';
 import 'package:GsTravel/src/presentation/pages/client/product/list/bloc/ClienteProductListEvent.dart';
@@ -8,6 +10,7 @@ import 'package:GsTravel/src/presentation/pages/client/product/list/bloc/Cliente
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:badges/badges.dart' as badges;
 
 class ClientProductListPage extends StatefulWidget {
   const ClientProductListPage({super.key});
@@ -42,7 +45,7 @@ class _ClientProductListPageState extends State<ClientProductListPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.green,
         centerTitle: true,
         title: const Text(
           'Productos',
@@ -64,16 +67,32 @@ class _ClientProductListPageState extends State<ClientProductListPage> {
             icon:
                 const Icon(Icons.search, color: Colors.white), // Lupa en blanco
             onPressed: () {
-              // Acción de búsqueda
               print('Buscar');
             },
           ),
-          IconButton(
-            icon: const Icon(Icons.shopping_cart_outlined,
-                color: Colors.white), // Carrito en blanco
-            onPressed: () {
-              // Acción del carrito
-              Navigator.pushNamed(context, 'client/shopping_bag');
+          BlocBuilder<ClientShoppingBagBloc, ClientShoppingBagState>(
+            builder: (context, shoppingBagState) {
+              // Calcular la cantidad total de productos en el carrito
+              int totalProductsInCart = shoppingBagState.products
+                  .fold(0, (sum, item) => sum + (item.quantity ?? 0));
+
+              return badges.Badge(
+                showBadge:
+                    totalProductsInCart > 0, // Mostrar solo si hay productos
+                position: badges.BadgePosition.topEnd(top: 0, end: 3),
+                badgeContent: Text(
+                  totalProductsInCart.toString(),
+                  style: const TextStyle(color: Colors.white),
+                ),
+                child: IconButton(
+                  icon: const Icon(Icons.shopping_cart_outlined,
+                      color: Colors.white),
+                  onPressed: () {
+                    // Acción del carrito
+                    Navigator.pushNamed(context, 'client/shopping_bag');
+                  },
+                ),
+              );
             },
           ),
         ],

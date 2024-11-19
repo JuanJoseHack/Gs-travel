@@ -21,7 +21,7 @@ class ClientProductDetailContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.green,
         centerTitle: true,
         title: const Text(
           'Detalle de Producto',
@@ -129,12 +129,12 @@ class ClientProductDetailContent extends StatelessWidget {
                       height: 40,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: Colors.purple.withOpacity(0.1),
+                        color: Colors.green.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: const Text(
                         '-',
-                        style: TextStyle(fontSize: 20, color: Colors.purple),
+                        style: TextStyle(fontSize: 20, color: Colors.green),
                       ),
                     ),
                   ),
@@ -154,12 +154,12 @@ class ClientProductDetailContent extends StatelessWidget {
                       height: 40,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: Colors.purple.withOpacity(0.1),
+                        color: Colors.green.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: const Text(
                         '+',
-                        style: TextStyle(fontSize: 20, color: Colors.purple),
+                        style: TextStyle(fontSize: 20, color: Colors.green),
                       ),
                     ),
                   ),
@@ -184,7 +184,7 @@ class ClientProductDetailContent extends StatelessWidget {
                     msg: 'Comprando ahora', toastLength: Toast.LENGTH_LONG);
               },
               style: OutlinedButton.styleFrom(
-                side: const BorderSide(color: Colors.teal),
+                side: const BorderSide(color: Colors.green),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -192,7 +192,7 @@ class ClientProductDetailContent extends StatelessWidget {
               ),
               child: const Text(
                 'Comprar ahora',
-                style: TextStyle(color: Colors.teal, fontSize: 16),
+                style: TextStyle(color: Colors.green, fontSize: 16),
               ),
             ),
           ),
@@ -208,7 +208,7 @@ class ClientProductDetailContent extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal,
+                backgroundColor: Colors.green,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -267,7 +267,7 @@ class ClientProductDetailContent extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.purple,
+                  color: Colors.green,
                 ),
               ),
               const Spacer(),
@@ -299,7 +299,7 @@ class ClientProductDetailContent extends StatelessWidget {
           width: double.infinity,
           height: 300,
           initialPage: 0,
-          indicatorColor: Colors.purple,
+          indicatorColor: Colors.black,
           indicatorBackgroundColor: Colors.grey,
           children: [
             product!.image1!.isNotEmpty
