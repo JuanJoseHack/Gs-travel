@@ -35,7 +35,7 @@ class ClientProductPage extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<ClienteCategoryListBloc, ClienteCategoryListState>(
         builder: (context, categoryState) {
-          if (categoryState.response is Loading) {
+          if (categoryState.response is Success) {
             return const Center(child: CircularProgressIndicator());
           } else if (categoryState.response is Error) {
             return Center(
@@ -50,7 +50,7 @@ class ClientProductPage extends StatelessWidget {
 
             return BlocBuilder<ClienteProductListBloc, ClienteProductListState>(
               builder: (context, productState) {
-                if (productState.response is Loading) {
+                if (productState.response is Success) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (productState.response is Error) {
                   return Center(
@@ -166,12 +166,12 @@ class ClientProductPage extends StatelessWidget {
                     },
                   );
                 } else {
-                  return const Center(child: Text('Sin datos disponibles.'));
+                  return const Center(child: CircularProgressIndicator());
                 }
               },
             );
           } else {
-            return const Center(child: Text('Estado desconocido.'));
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),
