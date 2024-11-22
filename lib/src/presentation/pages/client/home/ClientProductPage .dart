@@ -35,7 +35,7 @@ class ClientProductPage extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<ClienteCategoryListBloc, ClienteCategoryListState>(
         builder: (context, categoryState) {
-          if (categoryState.response is Success) {
+          if (categoryState.response is Loading) {
             return const Center(child: CircularProgressIndicator());
           } else if (categoryState.response is Error) {
             return Center(
@@ -50,7 +50,7 @@ class ClientProductPage extends StatelessWidget {
 
             return BlocBuilder<ClienteProductListBloc, ClienteProductListState>(
               builder: (context, productState) {
-                if (productState.response is Success) {
+                if (productState.response is Loading) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (productState.response is Error) {
                   return Center(
@@ -78,7 +78,7 @@ class ClientProductPage extends StatelessWidget {
                       List<Product> categoryProducts =
                           productsByCategory[categoryId]!;
 
-                      // Obtener la categoría y asignar un emoji dinámico basado en idCategory
+                      // Obtener la categoría
                       Category category = categories.firstWhere(
                         (category) => category.id == categoryId,
                         orElse: () => Category(
@@ -88,13 +88,12 @@ class ClientProductPage extends StatelessWidget {
                         ),
                       );
 
-                      // Emoji dinámico para la categoría
+                      // Emoji dinámico
                       String categoryEmoji = categoryEmojis[category.id] ?? '✨';
 
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Mostrar el título de la categoría como "Nombre + Emoji"
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(

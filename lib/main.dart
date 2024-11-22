@@ -15,6 +15,9 @@ import 'package:GsTravel/src/presentation/pages/client/home/ClientHomePage.dart'
 import 'package:GsTravel/src/presentation/pages/client/home/ClientProductPage%20.dart';
 import 'package:GsTravel/src/presentation/pages/client/homestatic/home_page.dart';
 import 'package:GsTravel/src/presentation/pages/client/homestatic/welcome_page.dart';
+import 'package:GsTravel/src/presentation/pages/client/payment/form/ClientPaymentFormPage.dart';
+import 'package:GsTravel/src/presentation/pages/client/payment/installments/ClientPaymentInstallmentsPage.dart';
+import 'package:GsTravel/src/presentation/pages/client/payment/status/ClientPaymentStatusPage.dart';
 import 'package:GsTravel/src/presentation/pages/client/product/detail/ClientProductDetailPage.dart';
 import 'package:GsTravel/src/presentation/pages/client/product/list/ClienteProductListPage.dart';
 import 'package:GsTravel/src/presentation/pages/profile/info/ProfileInfoPage.dart';
@@ -78,6 +81,12 @@ class MyApp extends StatelessWidget {
               ClientAddressListPage(),
           'client/address/create': (BuildContext context) =>
               ClientAddressCreatePage(),
+          'client/payment/form': (BuildContext context) =>
+              ClientPaymentFormPage(),
+          'client/payment/installments': (BuildContext context) =>
+              ClientPaymentInstallmentsPage(),
+          'client/payment/status': (BuildContext context) =>
+              ClientPaymentStatusPage(),
         },
       ),
     );
