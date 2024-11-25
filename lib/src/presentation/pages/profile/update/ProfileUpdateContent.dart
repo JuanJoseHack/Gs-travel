@@ -4,7 +4,6 @@ import 'package:GsTravel/src/presentation/pages/profile/update/bloc/ProfileUpdat
 import 'package:GsTravel/src/presentation/pages/profile/update/bloc/ProfileUpdateState.dart';
 import 'package:GsTravel/src/presentation/utils/BlocFormItem.dart';
 import 'package:GsTravel/src/presentation/utils/SelectOptionImageDialog.dart';
-import 'package:GsTravel/src/presentation/widgest/DefaultIconBack.dart';
 import 'package:GsTravel/src/presentation/widgest/DefaultTextField.dart';
 import 'package:flutter/material.dart';
 
@@ -17,132 +16,36 @@ class ProfileUpdateContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: state.formKey,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          _imageBackground(context),
-          SingleChildScrollView(
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [_imageProfile(context), _cardProfileInfo(context)],
-              ),
-            ),
-          ),
-          DefaultIconBack(left: 15, top: 50)
-        ],
+    return Scaffold(
+      backgroundColor:
+          Theme.of(context).primaryColor, // Fondo en color primario
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context); // Acción para retroceder
+          },
+        ),
       ),
-    );
-  }
-
-  Widget _cardProfileInfo(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: MediaQuery.of(context).size.height * 0.50,
-      decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 255, 255, 0.7),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(35),
-            topRight: Radius.circular(35),
-          )),
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
+      body: Form(
+        key: state.formKey,
+        child: Stack(
+          alignment: Alignment.topCenter,
           children: [
-            _textUpdateInfo(),
-            _textFieldName(),
-            _textFieldLastname(),
-            _textFieldPhone(),
-            _fabSubmit()
+            Column(
+              children: [
+                SizedBox(height: 50), // Espacio superior
+                _imageProfile(context),
+                SizedBox(height: 50),
+                _cardProfileInfo(context),
+              ],
+            ),
           ],
         ),
       ),
     );
-  }
-
-  Widget _fabSubmit() {
-    return Container(
-      alignment: Alignment.centerRight,
-      margin: EdgeInsets.only(right: 10, top: 20),
-      child: FloatingActionButton(
-        backgroundColor: Colors.black,
-        onPressed: () {
-          bloc?.add(ProfileUpdateFormSubmit());
-        },
-        child: Icon(
-          Icons.check,
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-
-  Widget _textUpdateInfo() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(top: 25, left: 35, bottom: 10),
-      child: Text(
-        'ACTUALIZAR INFORMACION',
-        style: TextStyle(fontSize: 17),
-      ),
-    );
-  }
-
-  Widget _textFieldName() {
-    return Container(
-        margin: EdgeInsets.only(left: 25, right: 25),
-        child: DefaultTextField(
-          label: 'Nombre',
-          icon: Icons.person,
-          color: Colors.black,
-          initialValue: user?.name ?? '',
-          onChanged: (text) {
-            bloc?.add(
-                ProfileUpdateNameChanged(name: BlocFormItem(value: text)));
-          },
-          validator: (value) {
-            return state.name.error;
-          },
-        ));
-  }
-
-  Widget _textFieldLastname() {
-    return Container(
-        margin: EdgeInsets.only(left: 25, right: 25),
-        child: DefaultTextField(
-          label: 'Apellido',
-          color: Colors.black,
-          icon: Icons.person_outline,
-          initialValue: user?.lastname ?? '',
-          onChanged: (text) {
-            bloc?.add(ProfileUpdateLastnameChanged(
-                lastname: BlocFormItem(value: text)));
-          },
-          validator: (value) {
-            return state.lastname.error;
-          },
-        ));
-  }
-
-  Widget _textFieldPhone() {
-    return Container(
-        margin: EdgeInsets.only(left: 25, right: 25),
-        child: DefaultTextField(
-          label: 'Telefono',
-          icon: Icons.phone,
-          color: Colors.black,
-          initialValue: user?.phone ?? '',
-          onChanged: (text) {
-            bloc?.add(
-                ProfileUpdatePhoneChanged(phone: BlocFormItem(value: text)));
-          },
-          validator: (value) {
-            return state.phone.error;
-          },
-        ));
   }
 
   Widget _imageProfile(BuildContext context) {
@@ -155,36 +58,139 @@ class ProfileUpdateContent extends StatelessWidget {
         });
       },
       child: Container(
-        margin: EdgeInsets.only(top: 100),
-        width: 150,
-        child: AspectRatio(
-          aspectRatio: 1 / 1,
-          child: ClipOval(
-            child: state.image != null
-                ? Image.file(
-                    state.image!,
-                    fit: BoxFit.cover,
-                  )
-                : FadeInImage.assetNetwork(
-                    placeholder: 'assets/img/user_image.png',
-                    image: user!.image!,
-                    fit: BoxFit.cover,
-                    fadeInDuration: Duration(seconds: 1),
-                  ),
-          ),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 10,
+              offset: Offset(0, 5),
+            ),
+          ],
+        ),
+        child: CircleAvatar(
+          radius: 80,
+          backgroundColor: Colors.white,
+          backgroundImage: state.image != null
+              ? FileImage(state.image!) as ImageProvider
+              : (user != null && user!.image != null && user!.image!.isNotEmpty
+                  ? NetworkImage(user!.image!)
+                  : AssetImage('assets/img/user_menu.png')) as ImageProvider,
         ),
       ),
     );
   }
 
-  Widget _imageBackground(BuildContext context) {
-    return Image.asset(
-      'assets/img/background1.jpg',
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      fit: BoxFit.cover,
-      color: Color.fromRGBO(0, 0, 0, 0.7),
-      colorBlendMode: BlendMode.darken,
+  Widget _cardProfileInfo(BuildContext context) {
+    return Expanded(
+      child: Container(
+        margin: EdgeInsets.only(top: 50),
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(24),
+            topRight: Radius.circular(24),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: Offset(0, -5),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _textUpdateInfo(),
+            _textFieldName(),
+            _textFieldLastname(),
+            _textFieldPhone(),
+            Spacer(),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: FloatingActionButton(
+                backgroundColor: Theme.of(context).primaryColor,
+                onPressed: () {
+                  bloc?.add(ProfileUpdateFormSubmit());
+                },
+                child: Icon(
+                  Icons.check,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _textUpdateInfo() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      margin: EdgeInsets.only(bottom: 20),
+      child: Text(
+        'ACTUALIZAR INFORMACIÓN',
+        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+
+  Widget _textFieldName() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      child: DefaultTextField(
+        label: 'Nombre',
+        icon: Icons.person,
+        color: Colors.black,
+        initialValue: user?.name ?? '',
+        onChanged: (text) {
+          bloc?.add(ProfileUpdateNameChanged(name: BlocFormItem(value: text)));
+        },
+        validator: (value) {
+          return state.name.error;
+        },
+      ),
+    );
+  }
+
+  Widget _textFieldLastname() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      child: DefaultTextField(
+        label: 'Apellido',
+        icon: Icons.person_outline,
+        color: Colors.black,
+        initialValue: user?.lastname ?? '',
+        onChanged: (text) {
+          bloc?.add(ProfileUpdateLastnameChanged(
+              lastname: BlocFormItem(value: text)));
+        },
+        validator: (value) {
+          return state.lastname.error;
+        },
+      ),
+    );
+  }
+
+  Widget _textFieldPhone() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      child: DefaultTextField(
+        label: 'Teléfono',
+        icon: Icons.phone,
+        color: Colors.black,
+        initialValue: user?.phone ?? '',
+        onChanged: (text) {
+          bloc?.add(
+              ProfileUpdatePhoneChanged(phone: BlocFormItem(value: text)));
+        },
+        validator: (value) {
+          return state.phone.error;
+        },
+      ),
     );
   }
 }

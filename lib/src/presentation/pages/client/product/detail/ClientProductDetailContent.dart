@@ -21,7 +21,7 @@ class ClientProductDetailContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: const Color.fromARGB(255, 40, 158, 11),
         centerTitle: true,
         title: const Text(
           'Detalle de Producto',
@@ -129,12 +129,15 @@ class ClientProductDetailContent extends StatelessWidget {
                       height: 40,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: Colors.green.withOpacity(0.1),
+                        color: const Color.fromARGB(255, 40, 158, 11)
+                            .withOpacity(0.1),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: const Text(
                         '-',
-                        style: TextStyle(fontSize: 20, color: Colors.green),
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: const Color.fromARGB(255, 40, 158, 11)),
                       ),
                     ),
                   ),
@@ -154,12 +157,15 @@ class ClientProductDetailContent extends StatelessWidget {
                       height: 40,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: Colors.green.withOpacity(0.1),
+                        color: const Color.fromARGB(255, 40, 158, 11)
+                            .withOpacity(0.1),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: const Text(
                         '+',
-                        style: TextStyle(fontSize: 20, color: Colors.green),
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: const Color.fromARGB(255, 40, 158, 11)),
                       ),
                     ),
                   ),
@@ -184,7 +190,8 @@ class ClientProductDetailContent extends StatelessWidget {
                     msg: 'Comprando ahora', toastLength: Toast.LENGTH_LONG);
               },
               style: OutlinedButton.styleFrom(
-                side: const BorderSide(color: Colors.green),
+                side: const BorderSide(
+                    color: const Color.fromARGB(255, 40, 158, 11)),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -192,7 +199,9 @@ class ClientProductDetailContent extends StatelessWidget {
               ),
               child: const Text(
                 'Comprar ahora',
-                style: TextStyle(color: Colors.green, fontSize: 16),
+                style: TextStyle(
+                    color: const Color.fromARGB(255, 40, 158, 11),
+                    fontSize: 16),
               ),
             ),
           ),
@@ -208,7 +217,7 @@ class ClientProductDetailContent extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: const Color.fromARGB(255, 40, 158, 11),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -267,7 +276,7 @@ class ClientProductDetailContent extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.green,
+                  color: const Color.fromARGB(255, 40, 158, 11),
                 ),
               ),
               const Spacer(),

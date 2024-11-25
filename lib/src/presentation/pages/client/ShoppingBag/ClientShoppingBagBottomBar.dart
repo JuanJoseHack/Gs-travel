@@ -44,7 +44,8 @@ class ClientShoppingBagBottomBar extends StatelessWidget {
                 Navigator.pushNamed(context, 'client/address/list');
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green, // Fondo verde
+                backgroundColor:
+                    const Color.fromARGB(255, 40, 158, 11), // Fondo verde
                 padding: const EdgeInsets.symmetric(
                     vertical: 16), // Altura del botón
                 shape: RoundedRectangleBorder(

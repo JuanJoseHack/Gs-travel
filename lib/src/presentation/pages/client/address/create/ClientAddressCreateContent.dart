@@ -2,7 +2,6 @@ import 'package:GsTravel/src/presentation/pages/client/address/create/bloc/Clien
 import 'package:GsTravel/src/presentation/pages/client/address/create/bloc/ClientAddressCreateEvent.dart';
 import 'package:GsTravel/src/presentation/pages/client/address/create/bloc/ClientAddressCreateState.dart';
 import 'package:GsTravel/src/presentation/utils/BlocFormItem.dart';
-import 'package:GsTravel/src/presentation/widgest/DefaultIconBack.dart';
 import 'package:GsTravel/src/presentation/widgest/DefaultTextField.dart';
 import 'package:flutter/material.dart';
 
@@ -14,86 +13,63 @@ class ClientAddressCreateContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
+    return Scaffold(
+      backgroundColor: Colors.grey[100],
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 40, 158, 11),
+        title: Text(
+          'Nueva Dirección',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: Colors.white, // Cambiar color de la flecha a blanco
+        ),
+      ),
+      body: Form(
         key: state.formKey,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            _imageBackground(context),
-            SingleChildScrollView(
-              child: Container(
-                height: MediaQuery.of(context).size.height,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _imageCategory(context),
-                    _cardCategoryForm(context)
-                  ],
-                ),
-              ),
+        child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _headerIcon(context),
+                SizedBox(height: 20),
+                _textFieldAddress(),
+                SizedBox(height: 15),
+                _textFieldNeighborhood(),
+                SizedBox(height: 30),
+                _submitButton(context),
+              ],
             ),
-            DefaultIconBack(left: 15, top: 50)
-          ],
-        ));
-  }
-
-  Widget _cardCategoryForm(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: MediaQuery.of(context).size.height * 0.42,
-      decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 255, 255, 0.7),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(35),
-            topRight: Radius.circular(35),
-          )),
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 35),
-        child: Column(
-          children: [
-            _textNewAddress(),
-            _textFieldAddress(),
-            _textFieldNeighborhood(),
-            _fabSubmit()
-          ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _fabSubmit() {
-    return Container(
-      alignment: Alignment.centerRight,
-      margin: EdgeInsets.only(top: 30),
-      child: FloatingActionButton(
-        onPressed: () {
-          if (state.formKey!.currentState!.validate()) {
-            bloc?.add(FormSubmit());
-          }
-        },
-        backgroundColor: Colors.black,
+  Widget _headerIcon(BuildContext context) {
+    return Center(
+      child: Container(
+        width: 80,
+        height: 80,
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 40, 158, 11),
+          shape: BoxShape.circle,
+        ),
         child: Icon(
-          Icons.check,
+          Icons.location_on,
+          size: 40,
           color: Colors.white,
         ),
       ),
     );
   }
 
-  Widget _textNewAddress() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(top: 35, left: 10, bottom: 10),
-      child: Text(
-        'NUEVA DIRECCION',
-        style: TextStyle(fontSize: 17),
-      ),
-    );
-  }
-
   Widget _textFieldAddress() {
     return DefaultTextField(
-      label: 'Direccion',
+      label: 'Dirección',
       icon: Icons.my_location,
       onChanged: (text) {
         bloc?.add(AddressChanged(address: BlocFormItem(value: text)));
@@ -108,7 +84,7 @@ class ClientAddressCreateContent extends StatelessWidget {
   Widget _textFieldNeighborhood() {
     return DefaultTextField(
       label: 'Barrio',
-      icon: Icons.location_on,
+      icon: Icons.location_city,
       onChanged: (text) {
         bloc?.add(NeighborhoodChanged(neighborhood: BlocFormItem(value: text)));
       },
@@ -119,26 +95,26 @@ class ClientAddressCreateContent extends StatelessWidget {
     );
   }
 
-  Widget _imageCategory(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 60),
-      child: Image.asset(
-        'assets/img/location.png',
-        fit: BoxFit.cover,
-        width: 150,
-        height: 150,
+  Widget _submitButton(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        onPressed: () {
+          if (state.formKey!.currentState!.validate()) {
+            bloc?.add(FormSubmit());
+          }
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color.fromARGB(255, 40, 158, 11),
+          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+        child: Text(
+          'Guardar Dirección',
+          style: TextStyle(color: Colors.white, fontSize: 16),
+        ),
       ),
-    );
-  }
-
-  Widget _imageBackground(BuildContext context) {
-    return Image.asset(
-      'assets/img/address_background2.jpg',
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      fit: BoxFit.cover,
-      color: Color.fromRGBO(0, 0, 0, 0.7),
-      colorBlendMode: BlendMode.darken,
     );
   }
 }

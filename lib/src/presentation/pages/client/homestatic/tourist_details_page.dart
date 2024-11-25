@@ -9,6 +9,8 @@ class TouristDetailsPage extends StatelessWidget {
   final double rating;
   final String description;
   final String estimatedTime;
+  final List<String> recommendations; // Cambiado a lista para viñetas
+  final List<String> precautions; // Cambiado a lista para viñetas
 
   const TouristDetailsPage({
     Key? key,
@@ -18,6 +20,8 @@ class TouristDetailsPage extends StatelessWidget {
     required this.rating,
     required this.description,
     required this.estimatedTime,
+    required this.recommendations,
+    required this.precautions,
   }) : super(key: key);
 
   @override
@@ -56,17 +60,16 @@ class TouristDetailsPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Ajustar los botones al borde superior izquierdo
                 Positioned(
                   top: 10,
-                  left: -5, // Ahora bien alineado al borde
+                  left: -5,
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.7),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 2, horizontal: 10), // Ajuste fino del padding
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -158,6 +161,70 @@ class TouristDetailsPage extends StatelessWidget {
             ),
 
             const SizedBox(height: 20),
+
+            // Recomendaciones
+            if (recommendations.isNotEmpty) ...[
+              Text(
+                "Recomendaciones",
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+              const SizedBox(height: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: recommendations
+                    .map(
+                      (item) => Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "• ",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Expanded(
+                            child: Text(
+                              item,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                    .toList(),
+              ),
+              const SizedBox(height: 20),
+            ],
+
+            // Precauciones
+            if (precautions.isNotEmpty) ...[
+              Text(
+                "Precauciones",
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+              const SizedBox(height: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: precautions
+                    .map(
+                      (item) => Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "• ",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Expanded(
+                            child: Text(
+                              item,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                    .toList(),
+              ),
+              const SizedBox(height: 20),
+            ],
 
             // Botón de unirse al tour
             ElevatedButton(

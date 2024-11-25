@@ -8,84 +8,100 @@ class ProfileInfoContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        _whiteBackground(), // Fondo blanco en lugar de imagen
-        Column(
-          children: [
-            _imageProfile(),
-            SizedBox(height: 60), // Espacio entre la imagen de perfil y el card
-            Expanded(child: _cardProfileInfo(context)),
-          ],
-        ),
-      ],
+    return Scaffold(
+      backgroundColor:
+          Theme.of(context).primaryColor, // Fondo en color primario
+      body: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Column(
+            children: [
+              SizedBox(height: 130), // Espacio superior para la imagen
+              _imageProfile(),
+              SizedBox(height: 60),
+              _cardProfileInfo(context),
+            ],
+          ),
+          Positioned(
+            top: 40,
+            left: 16,
+            child: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.white),
+              onPressed: () => Navigator.pop(context),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  Widget _whiteBackground() {
+  Widget _imageProfile() {
     return Container(
-      color:
-          const Color.fromARGB(255, 255, 250, 250), // Establece el fondo blanco
-      width: double.infinity,
-      height: double.infinity,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 10,
+            offset: Offset(0, 5),
+          ),
+        ],
+      ),
+      child: CircleAvatar(
+        radius: 80,
+        backgroundColor: Colors.white,
+        backgroundImage:
+            user != null && user!.image != null && user!.image!.isNotEmpty
+                ? NetworkImage(user!.image!) as ImageProvider
+                : AssetImage('assets/img/user_menu.png'),
+      ),
     );
   }
 
   Widget _cardProfileInfo(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      constraints: BoxConstraints(
-        maxHeight: MediaQuery.of(context).size.height * 0.35,
-      ),
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(255, 255, 255, 0.675),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(18),
-          topRight: Radius.circular(18),
-        ),
-      ),
+    return Expanded(
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 20),
-        child: Stack(
-          // Usamos un Stack para el botón de edición
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(
-                      height: 30), // Espacio adicional antes de los ListTile
-                  ListTile(
-                    title: Text('${user?.name ?? ''} ${user?.lastname ?? ''}'),
-                    subtitle: Text('Nombre de usuario'),
-                    leading: Icon(Icons.person),
-                  ),
-                  ListTile(
-                    title: Text(user?.email ?? ''),
-                    subtitle: Text('Correo electrónico'),
-                    leading: Icon(Icons.email),
-                  ),
-                  ListTile(
-                    title: Text(user?.phone ?? ''),
-                    subtitle: Text('Teléfono'),
-                    leading: Icon(Icons.phone),
-                  ),
-                ],
-              ),
+        margin: EdgeInsets.only(top: 50),
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(24),
+            topRight: Radius.circular(24),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: Offset(0, -5),
             ),
-            Positioned(
-              // Posicionamos el botón de edición
-              right: 5,
-              bottom: 20, // Ajusta este valor para mover el botón hacia arriba
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _infoTile(
+                context,
+                Icons.person,
+                '${user?.name ?? ''} ${user?.lastname ?? ''}',
+                'Nombre de usuario'),
+            Divider(),
+            _infoTile(
+                context, Icons.email, user?.email ?? '', 'Correo electrónico'),
+            Divider(),
+            _infoTile(context, Icons.phone, user?.phone ?? '', 'Teléfono'),
+            Spacer(),
+            Align(
+              alignment: Alignment.bottomRight,
               child: FloatingActionButton(
-                backgroundColor: Colors.black,
+                backgroundColor: Theme.of(context).primaryColor,
                 onPressed: () {
                   Navigator.pushNamed(context, 'profile/update',
                       arguments: user);
                 },
                 child: Icon(
                   Icons.edit,
-                  color: const Color.fromARGB(255, 255, 255, 255),
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -95,23 +111,18 @@ class ProfileInfoContent extends StatelessWidget {
     );
   }
 
-  Widget _imageProfile() {
-    return Container(
-      margin: EdgeInsets.only(top: 80),
-      width: 200,
-      child: AspectRatio(
-        aspectRatio: 1 / 1,
-        child: ClipOval(
-          child: user != null && user!.image != null && user!.image!.isNotEmpty
-              ? FadeInImage.assetNetwork(
-                  placeholder: 'assets/img/user_image.png',
-                  image: user!.image!,
-                  fit: BoxFit.cover,
-                  fadeInDuration: Duration(seconds: 1),
-                )
-              : Image.asset('assets/img/user_menu.png'), // Imagen por defecto
-        ),
+  Widget _infoTile(
+      BuildContext context, IconData icon, String title, String subtitle) {
+    return ListTile(
+      leading: CircleAvatar(
+        backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
+        child: Icon(icon, color: Theme.of(context).primaryColor),
       ),
+      title: Text(
+        title,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      subtitle: Text(subtitle),
     );
   }
 }

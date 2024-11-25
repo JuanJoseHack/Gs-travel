@@ -8,13 +8,13 @@ import 'package:GsTravel/src/presentation/pages/admin/product/list/AdminProductL
 import 'package:GsTravel/src/presentation/pages/admin/product/update/AdminProductUpdatePage.dart';
 import 'package:GsTravel/src/presentation/pages/auth/login/LoginPage.dart';
 import 'package:GsTravel/src/presentation/pages/auth/register/RegisterPage.dart';
+import 'package:GsTravel/src/presentation/pages/client/Orders/ClienteOrderListPage.dart';
 import 'package:GsTravel/src/presentation/pages/client/ShoppingBag/ClientShoppingBagPage.dart';
 import 'package:GsTravel/src/presentation/pages/client/address/create/ClientAddressCreatePage.dart';
 import 'package:GsTravel/src/presentation/pages/client/address/list/ClientAddressListPage.dart';
 import 'package:GsTravel/src/presentation/pages/client/home/ClientHomePage.dart';
 import 'package:GsTravel/src/presentation/pages/client/home/ClientProductPage%20.dart';
 import 'package:GsTravel/src/presentation/pages/client/homestatic/home_page.dart';
-import 'package:GsTravel/src/presentation/pages/client/homestatic/welcome_page.dart';
 import 'package:GsTravel/src/presentation/pages/client/payment/form/ClientPaymentFormPage.dart';
 import 'package:GsTravel/src/presentation/pages/client/payment/installments/ClientPaymentInstallmentsPage.dart';
 import 'package:GsTravel/src/presentation/pages/client/payment/status/ClientPaymentStatusPage.dart';
@@ -53,7 +53,6 @@ class MyApp extends StatelessWidget {
         routes: {
           'login': (BuildContext context) => LoginPage(),
           'home': (BuildContext context) => HomePage(),
-          'welcome': (BuildContext context) => WelcomePage(),
           'register': (BuildContext context) => RegisterPage(),
           'client/home': (BuildContext context) => ClientHomePage(),
           'client/home/product': (BuildContext context) => ClientProductPage(),
@@ -87,6 +86,7 @@ class MyApp extends StatelessWidget {
               ClientPaymentInstallmentsPage(),
           'client/payment/status': (BuildContext context) =>
               ClientPaymentStatusPage(),
+          'client/Orders': (BuildContext context) => ClienteOrderListPage(),
         },
       ),
     );

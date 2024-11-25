@@ -3,6 +3,7 @@ import 'package:GsTravel/src/data/dataSource/remote/service/AddressService.dart'
 import 'package:GsTravel/src/data/dataSource/remote/service/AuthService.dart';
 import 'package:GsTravel/src/data/dataSource/remote/service/CategoriesService.dart';
 import 'package:GsTravel/src/data/dataSource/remote/service/MercadoPagoService.dart';
+import 'package:GsTravel/src/data/dataSource/remote/service/OrderService.dart';
 import 'package:GsTravel/src/data/dataSource/remote/service/ProductsService.dart';
 import 'package:GsTravel/src/data/dataSource/remote/service/RolesService.dart';
 import 'package:GsTravel/src/data/dataSource/remote/service/UsersService.dart';
@@ -10,6 +11,7 @@ import 'package:GsTravel/src/data/repository/AddressRepositoryImpl.dart';
 import 'package:GsTravel/src/data/repository/AuthRepositoryImpl.dart';
 import 'package:GsTravel/src/data/repository/CategoriesRepositoryImpl.dart';
 import 'package:GsTravel/src/data/repository/MercadoPagoRepositoryImpl.dart';
+import 'package:GsTravel/src/data/repository/OrdersRepositoryImpl.dart';
 import 'package:GsTravel/src/data/repository/ProductsRepositoryImpl.dart';
 import 'package:GsTravel/src/data/repository/RolesRepositoryImpl.dart';
 import 'package:GsTravel/src/data/repository/ShoppingBagRepositoryImpl.dart';
@@ -19,6 +21,7 @@ import 'package:GsTravel/src/domain/repository/AddressRepository.dart';
 import 'package:GsTravel/src/domain/repository/AuthRepository.dart';
 import 'package:GsTravel/src/domain/repository/CategoriesRepository.dart';
 import 'package:GsTravel/src/domain/repository/MercadoPagoRepository.dart';
+import 'package:GsTravel/src/domain/repository/OrdersRepository.dart';
 import 'package:GsTravel/src/domain/repository/ProductsRepository.dart';
 import 'package:GsTravel/src/domain/repository/RolesRepository.dart';
 import 'package:GsTravel/src/domain/repository/ShoppingBagRepository.dart';
@@ -34,6 +37,8 @@ import 'package:GsTravel/src/domain/useCase/MercadoPago/CreatePaymentUseCase.dar
 import 'package:GsTravel/src/domain/useCase/MercadoPago/GetIdentificationTypesUseCase.dart';
 import 'package:GsTravel/src/domain/useCase/MercadoPago/GetInstallmentsUseCase.dart';
 import 'package:GsTravel/src/domain/useCase/MercadoPago/MercadoPagoUseCases.dart';
+import 'package:GsTravel/src/domain/useCase/Order/GetOrdersByClientUseCase.dart';
+import 'package:GsTravel/src/domain/useCase/Order/OrdersUseCases.dart';
 import 'package:GsTravel/src/domain/useCase/Roles/CreateRolesUseCase.dart';
 import 'package:GsTravel/src/domain/useCase/Roles/GetRolesUseCases.dart';
 import 'package:GsTravel/src/domain/useCase/Roles/RolesUseCases.dart';
@@ -103,6 +108,9 @@ abstract class AppModule {
   @injectable
   MercadoPagoService get mercadoPagoService => MercadoPagoService(token);
 
+  @injectable
+  OrderService get orderService => OrderService(token);
+
   // Repositories
   @injectable
   AuthRepository get authRepository =>
@@ -133,6 +141,9 @@ abstract class AppModule {
   @injectable
   MercadoPagoRepository get mercadoPagoRepository =>
       MercadoPagoRepositoryImpl(mercadoPagoService);
+
+  @injectable
+  OrdersRepository get ordersRepository => OrdersRepositoryImpl(orderService);
   // Use Cases
   @injectable
   AuthUseCases get authUseCases => AuthUseCases(
@@ -193,4 +204,9 @@ abstract class AppModule {
       createCardToken: CreateCardTokenUseCase(mercadoPagoRepository),
       getInstallments: GetInstallmentsUseCase(mercadoPagoRepository),
       createPaymentUseCase: CreatePaymentUseCase(mercadoPagoRepository));
+
+  @injectable
+  OrdersUseCases get ordersUseCases => OrdersUseCases(
+        getOrdersByClient: GetOrdersByClientUseCase(ordersRepository),
+      );
 }

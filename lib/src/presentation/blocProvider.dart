@@ -1,6 +1,7 @@
 import 'package:GsTravel/injection.dart';
 import 'package:GsTravel/src/domain/useCase/Auth/AuthUseCases.dart';
 import 'package:GsTravel/src/domain/useCase/MercadoPago/MercadoPagoUseCases.dart';
+import 'package:GsTravel/src/domain/useCase/Order/GetOrdersByClientUseCase.dart';
 import 'package:GsTravel/src/domain/useCase/ShoppingBag/ShoppingBagUseCases.dart';
 import 'package:GsTravel/src/domain/useCase/address/AddressUseCases.dart';
 import 'package:GsTravel/src/domain/useCase/categories/CategoriesUseCases.dart';
@@ -18,6 +19,7 @@ import 'package:GsTravel/src/presentation/pages/auth/login/bloc/LoginBloc.dart';
 import 'package:GsTravel/src/presentation/pages/auth/login/bloc/LoginEvent.dart';
 import 'package:GsTravel/src/presentation/pages/auth/register/bloc/RegisterBloc.dart';
 import 'package:GsTravel/src/presentation/pages/auth/register/bloc/RegisterEvent.dart';
+import 'package:GsTravel/src/presentation/pages/client/Orders/bloc/ClienteOrderListBloc.dart';
 import 'package:GsTravel/src/presentation/pages/client/ShoppingBag/bloc/ClientShoppingBagBloc.dart';
 import 'package:GsTravel/src/presentation/pages/client/address/create/bloc/ClientAddressCreateBloc.dart';
 import 'package:GsTravel/src/presentation/pages/client/address/create/bloc/ClientAddressCreateEvent.dart';
@@ -101,4 +103,10 @@ List<BlocProvider> blocProvider = [
             locator<ShoppingBagUseCases>(),
             locator<AddressUseCases>(),
           )),
+  BlocProvider<ClienteOrderListBloc>(
+    create: (context) => ClienteOrderListBloc(
+      getOrdersByClientUseCase:
+          locator<GetOrdersByClientUseCase>(), // Inyectar el caso de uso
+    ),
+  ),
 ];

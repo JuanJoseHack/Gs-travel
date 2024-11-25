@@ -1,7 +1,9 @@
 import 'package:GsTravel/src/presentation/pages/client/ShoppingBag/bloc/ClientShoppingBagBloc.dart';
 import 'package:GsTravel/src/presentation/pages/client/ShoppingBag/bloc/ClientShoppingBagState.dart';
+import 'package:GsTravel/src/presentation/pages/client/home/AyudaClientePage.dart';
 import 'package:GsTravel/src/presentation/pages/client/home/ClientCategoryPage.dart';
 import 'package:GsTravel/src/presentation/pages/client/home/ClientProductPage%20.dart';
+import 'package:GsTravel/src/presentation/pages/client/home/Prueba.dart';
 import 'package:GsTravel/src/presentation/pages/client/home/bloc/ClientHomeBloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,8 +25,8 @@ class _ClientHomePageState extends State<ClientHomePage> {
   final List<Widget> _pages = [
     ClientProductPage(),
     ClientCategoryPage(),
-    Center(child: Text('Mis Pedidos', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Ayuda', style: TextStyle(fontSize: 24))),
+    SurprisePage(),
+    YapeHelpCenterApp(),
   ];
 
   @override
@@ -37,7 +39,7 @@ class _ClientHomePageState extends State<ClientHomePage> {
     return Scaffold(
       appBar: showAppBar
           ? AppBar(
-              backgroundColor: Colors.green,
+              backgroundColor: const Color.fromARGB(255, 40, 158, 11),
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -138,7 +140,8 @@ class _ClientHomePageState extends State<ClientHomePage> {
           _buildBottomNavItem(Icons.shopping_bag, 'Mis Pedidos', 2),
           _buildBottomNavItem(Icons.headset_mic, 'Ayuda', 3),
         ],
-        selectedItemColor: Colors.green, // Color del ítem seleccionado
+        selectedItemColor: const Color.fromARGB(
+            255, 40, 158, 11), // Color del ítem seleccionado
         unselectedItemColor: Colors.black54, // Color de ítems no seleccionados
         backgroundColor: Colors.white,
       ),
@@ -158,7 +161,10 @@ class _ClientHomePageState extends State<ClientHomePage> {
               )
             : null,
         padding: EdgeInsets.all(8), // Espaciado dentro del círculo
-        child: Icon(icon, color: isSelected ? Colors.green : Colors.black54),
+        child: Icon(icon,
+            color: isSelected
+                ? const Color.fromARGB(255, 40, 158, 11)
+                : Colors.black54),
       ),
       label: label,
     );

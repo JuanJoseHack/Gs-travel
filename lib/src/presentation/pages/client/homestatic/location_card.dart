@@ -28,7 +28,7 @@ class LocationCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  "Laguna Azul, Tarapoto",
+                  "Ubicacion",
                   style: Theme.of(context).textTheme.labelLarge,
                 )
               ],

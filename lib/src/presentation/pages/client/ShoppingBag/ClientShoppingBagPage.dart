@@ -29,23 +29,18 @@ class _ClientShoppingBagPageState extends State<ClientShoppingBagPage> {
     _bloc = BlocProvider.of<ClientShoppingBagBloc>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        elevation: 0,
+        backgroundColor: const Color.fromARGB(255, 40, 158, 11),
         centerTitle: true,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(20), // Bordes redondeados
-          ),
-        ),
         title: const Text(
           'Mi carrito',
           style: TextStyle(
-            color: Colors.black,
+            color: Color.fromARGB(255, 255, 255, 255),
             fontWeight: FontWeight.bold,
           ),
         ),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back,
+              color: Color.fromARGB(255, 255, 255, 255)),
           onPressed: () {
             Navigator.pop(context); // Acción al presionar el botón de regreso
           },

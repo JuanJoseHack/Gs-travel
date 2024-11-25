@@ -45,7 +45,7 @@ class _ClientProductListPageState extends State<ClientProductListPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: const Color.fromARGB(255, 40, 158, 11),
         centerTitle: true,
         title: const Text(
           'Productos',

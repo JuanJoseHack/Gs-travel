@@ -105,7 +105,7 @@ class ClientShoppingBagItem extends StatelessWidget {
       style: const TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.bold,
-        color: Colors.green,
+        color: const Color.fromARGB(255, 40, 158, 11),
       ),
     );
   }
@@ -122,7 +122,7 @@ class ClientShoppingBagItem extends StatelessWidget {
             height: 35,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Colors.green.withOpacity(0.1),
+              color: const Color.fromARGB(255, 40, 158, 11).withOpacity(0.1),
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(25),
                 bottomLeft: Radius.circular(25),
@@ -130,7 +130,8 @@ class ClientShoppingBagItem extends StatelessWidget {
             ),
             child: const Text(
               '-',
-              style: TextStyle(fontSize: 18, color: Colors.green),
+              style: TextStyle(
+                  fontSize: 18, color: const Color.fromARGB(255, 40, 158, 11)),
             ),
           ),
         ),
@@ -155,7 +156,7 @@ class ClientShoppingBagItem extends StatelessWidget {
             height: 35,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Colors.green.withOpacity(0.1),
+              color: const Color.fromARGB(255, 40, 158, 11).withOpacity(0.1),
               borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(25),
                 bottomRight: Radius.circular(25),
@@ -163,7 +164,8 @@ class ClientShoppingBagItem extends StatelessWidget {
             ),
             child: const Text(
               '+',
-              style: TextStyle(fontSize: 18, color: Colors.green),
+              style: TextStyle(
+                  fontSize: 18, color: const Color.fromARGB(255, 40, 158, 11)),
             ),
           ),
         ),

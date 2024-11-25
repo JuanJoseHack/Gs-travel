@@ -38,6 +38,10 @@ class RecommendedPlaces extends StatelessWidget {
                         rating: place.rating,
                         description: place.description,
                         estimatedTime: place.estimatedTime,
+                        recommendations: place.recommendations
+                            .split(','), // Usa split() correctamente
+                        precautions: place.precautions
+                            .split(','), // Usa split() correctamente
                       ),
                     ),
                   );

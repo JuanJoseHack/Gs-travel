@@ -1,4 +1,8 @@
-abstract class Resource<T> {}
+abstract class Resource<T> {
+  get message => null;
+
+  get data => null;
+}
 
 class Initial extends Resource {}
 

@@ -4,7 +4,10 @@ import 'package:GsTravel/src/presentation/pages/client/homestatic/recommended_pl
 import 'package:GsTravel/src/presentation/pages/client/homestatic/tourist_places.dart';
 import 'package:GsTravel/src/presentation/widgest/custom_icon_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:GsTravel/src/presentation/pages/profile/info/bloc/ProfileInfoBloc.dart';
+import 'package:GsTravel/src/presentation/pages/profile/info/bloc/ProfileInfoState.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,8 +18,7 @@ class HomePage extends StatelessWidget {
         Navigator.pushReplacementNamed(context, 'home'); // Ruta para Home
         break;
       case 1:
-        Navigator.pushReplacementNamed(
-            context, '/bookmark'); // Ruta para Bookmark
+        Navigator.pushReplacementNamed(context, ''); // Ruta para Bookmark
         break;
       case 2:
         Navigator.pushReplacementNamed(
@@ -35,15 +37,20 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text("Bienvenido"),
-            Text(
-              "Mark Landeo",
-              style: Theme.of(context).textTheme.labelMedium,
-            ),
-          ],
+        title: BlocBuilder<ProfileInfoBloc, ProfileInfoState>(
+          builder: (context, state) {
+            final userName = state.user?.name ?? "Usuario"; // Nombre dinámico
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text("Bienvenido"),
+                Text(
+                  userName,
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+              ],
+            );
+          },
         ),
         actions: const [
           CustomIconButton(

@@ -35,6 +35,10 @@ class NearbyPlaces extends StatelessWidget {
                         rating: 4.5,
                         description: place.description, // Descripción única
                         estimatedTime: place.estimatedTime,
+                        recommendations: place.recommendations
+                            .split(','), // Usa split() correctamente
+                        precautions: place.precautions
+                            .split(','), // Usa split() correctamente
                       ),
                     ),
                   );
@@ -64,8 +68,29 @@ class NearbyPlaces extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.location_on,
+                                  color: Theme.of(context).primaryColor,
+                                  size: 16,
+                                ),
+                                const SizedBox(width: 4),
+                                Expanded(
+                                  child: Text(
+                                    place.location, // Mostrar ubicación única
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
+                            ),
                             Text(
-                              place.location, // Mostrar ubicación única
+                              _truncateDescription(place
+                                  .description), // Mostrar descripción truncada
                               style: const TextStyle(
                                 fontSize: 14,
                                 color: Color.fromARGB(255, 0, 0, 0),
@@ -79,9 +104,11 @@ class NearbyPlaces extends StatelessWidget {
                                   color: Colors.yellow.shade700,
                                   size: 14,
                                 ),
-                                const Text(
-                                  "4.5",
-                                  style: TextStyle(fontSize: 12),
+                                Text(
+                                  place.rating.toString(),
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                  ),
                                 ),
                               ],
                             ),
@@ -97,5 +124,13 @@ class NearbyPlaces extends StatelessWidget {
         );
       }),
     );
+  }
+
+  // Función para truncar la descripción
+  String _truncateDescription(String description, {int maxLength = 20}) {
+    if (description.length > maxLength) {
+      return '${description.substring(0, maxLength)}... ver más';
+    }
+    return description;
   }
 }
